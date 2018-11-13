@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CDIO3.iml" filepath="$PROJECT_DIR$/.idea/CDIO3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Monopoly/Monopoly.iml" filepath="$PROJECT_DIR$/Monopoly/Monopoly.iml" />
     </modules>
   </component>
 </project>
