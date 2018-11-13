@@ -14,16 +14,18 @@ public class Dice {
      * Defines the value.
      */
     int value = 1;
+
     /**
      * Defines the sides for the die with a final static so it can't be changed.
      */
-    public final static int DiceSides = 6;
+    public final int DIESIDES;
 
     /**
      * This constructor is creating a new random.
      */
-    public Dice() {
+    public Dice(int dieSides) {
         this.random = new Random();
+        this.DIESIDES = dieSides;
     }
 
     /**
@@ -32,7 +34,7 @@ public class Dice {
      */
     public int cast() {
         random = new Random(random.nextInt());//tving ny random per kald
-        value = random.nextInt(DiceSides)+1;
+        value = random.nextInt(DIESIDES)+1;
         return value;
     }
 
