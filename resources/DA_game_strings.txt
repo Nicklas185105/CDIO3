@@ -20,38 +20,63 @@ invalid_amount_players
 Ugyldigt antal spillere! Prøv igen!
 
 
-field_tower
-Du har fundet tårne, og finder gamle skatte. Du får 250!
+field_start
+Du landede på start
 
-field_crater
-Du faldt ned i et krater og mistede 100
+field_burger_baren
+Du landede på burgerbaren
 
-field_palace_gates
-Du kom til paladset og kongen giver dig 100!
+field_pizzariaet
+Du landede på pizzariaet
 
-field_cold_desert
-Du blev nødt til at overnatte i den kolde ørken og blev røvet i din søvn. Du mister 20.
+field_slik_butikken
+Du landede på slikbutikken
 
-field_walled_city
-Du fandt walled city! Du får 100
+field_is_kiosken
+Du landede på iskiosken
 
-field_monastary
-Du kom til monastary og fik ingenting
+field_fængsel
+Du er i fængsel
 
-field_black_cave
-Du befidner dig i en mørk grotte og kommer til at tabe 70. Du kan ikke finde dem igen. De er væk.
+field_museet
+Du landede på museet
 
-field_huts_in_the_mountain
-Du fandt nogle små hytter på et bjerg. Du får 60!
+field_biblioteket
+Du landede på biblioteket
 
-field_the_werewall
-Du ankom til vareulvemuren og blev jagtet væk af vareulve. Du tabte 80. Heldigvis får du en ekstra tur.
+field_skate_parken
+Du landede på skateparken
 
-field_the_pit
-Du faldt næsten ned i et pit, men undgik faldet i sidste sekund. Din pung var ikke så heldig. Du mister 50.
+field_swimming_poolen
+Du landede på swimmingpoolen
 
-field_goldmine
-Mens du udforsker en gammelgrotte, ser du noget skinne i hjørnet af dit øje. Du går hen og samler det op, og indser at det er en massiv guldklump. Du får 650! Du er rig!
+field_parkering
+Du landede på gratis parkering
 
+field_spille_hallen
+Du landede på spillehallen
 
+field_kinoen
+Du landede på kinoen.
+
+field_legetøjs_butikken
+Du landede på legetøjsbutikken
+
+field_dyre_butikken
+Du landede på dyre butikken
+
+field_gå_fængsel
+Du skal i fængsel
+
+field_bowling_hallen
+Du landede på bowling hallen
+
+field_zoo
+Du landede på zoo
+
+field_vandlandet
+Du landede på vandlandet
+
+field_strand_promenaden
+Du landede på strand promenaden
 

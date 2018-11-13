@@ -9,5 +9,8 @@
         <module name="CDIO3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CDIO3" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
