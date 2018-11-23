@@ -1,7 +1,7 @@
 package main.Spil.Controller;
 
 import main.Spil.Field;
-import main.Spil.FieldFactory;
+import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 import main.Spil.Model.Player;
 import main.Spil.View.View;
@@ -21,7 +21,7 @@ public class DiceGame {
      * Defines GameStringContainer as stringContainer.
      */
     LanguagePack stringContainer;
-    FieldFactory fieldFactory;
+    GameBoard gameBoard;
 
     /**
      * This method is creating a new GameStringContainer with a file path and calls the method getPlayers.
@@ -51,7 +51,7 @@ public class DiceGame {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }
 
-        fieldFactory = new FieldFactory(stringContainer);
+        this.gameBoard = new GameBoard(stringContainer);
         this.players = getPlayers();
     }
 
@@ -83,7 +83,7 @@ public class DiceGame {
 
                 System.out.println();
                 diceCup.rollDice();
-                Field fieldLandedOn = fieldFactory.getField(diceCup.getFaceValue());
+                Field fieldLandedOn = gameBoard.getFields()[diceCup.getFaceValue()];
 
                 View.print(stringContainer.getString("field_land"), fieldLandedOn.name);
                 View.print(fieldLandedOn.fieldText);

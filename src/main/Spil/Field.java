@@ -4,9 +4,8 @@ package main.Spil;
  * This class is controlling each field.
  *
  * <p>
- *     Each field has a name, a value and a description. While one field can give the player another turn.
+ * Each field has a name, a value and a description. While one field can give the player another turn.
  * </p>
- *
  */
 public class Field {
     /**
@@ -30,11 +29,12 @@ public class Field {
 
     /**
      * This method is for creating fields, where the player can't get another turn.
-     * @param name The name of the field.
-     * @param value The value of the field.
+     *
+     * @param name      The name of the field.
+     * @param value     The value of the field.
      * @param fieldText The description of the field.
      */
-    Field(String name, int value, String fieldText) {
+    public Field(String name, int value, String fieldText) {
         this.name = name;
         this.value = value;
         this.fieldText = fieldText;
@@ -43,9 +43,10 @@ public class Field {
 
     /**
      * This method is for creating the field, where the player can get another turn.
-     * @param name The name of the field.
-     * @param value The value of the field.
-     * @param fieldText The description of the field.
+     *
+     * @param name            The name of the field.
+     * @param value           The value of the field.
+     * @param fieldText       The description of the field.
      * @param getsAnotherTurn The variable that decides if the player is getting another turn.
      */
     Field(String name, int value, String fieldText, boolean getsAnotherTurn) {
