@@ -1,4 +1,6 @@
-package main.Spil;
+package main.Spil.Model;
+
+import main.Spil.Model.Account;
 
 /**
  * This class is for creating the players.
@@ -11,7 +13,7 @@ public class Player {
     /**
      * Defines the Account as account.
      */
-    Account account;
+    public Account account;
 
     /**
      * This method is setting a name for the player and creating an account for the player.

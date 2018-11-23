@@ -1,4 +1,4 @@
-package main.Spil;
+package main.Spil.View;
 
 import java.util.Scanner;
 

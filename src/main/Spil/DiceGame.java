@@ -1,8 +1,10 @@
 package main.Spil;
 
+import main.Spil.Model.Player;
+import main.Spil.View.View;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * This is the class that starts the application.
@@ -73,11 +75,11 @@ public class DiceGame {
             for (int i = 0; i<players.length; i++) {
                 DiceCup diceCup = new DiceCup();
                 View.print("-------------------------------------------------------------------------------------------------------------------------");
-                View.print(stringContainer.getString("cast_dice"), players[i].getName());
+                View.print(stringContainer.getString("roll_dice"), players[i].getName());
                 System.in.read();
 
                 System.out.println();
-                diceCup.castDices();
+                diceCup.rollDices();
                 Field fieldLandedOn = fieldFactory.getField(diceCup.getFaceValue());
 
                 View.print(stringContainer.getString("field_land"), fieldLandedOn.name);
@@ -86,14 +88,14 @@ public class DiceGame {
                 players[i].account.changeBalance(fieldLandedOn.value);
 
                 View.print("");
-                View.print(stringContainer.getString("balance"), players[i].account.balance);
+                View.print(stringContainer.getString("balance"), players[i].account.getBalance());
 
                 if (fieldLandedOn.getsAnotherTurn) {
                     i--;
                     continue;
                 }
 
-                if (players[i].account.balance >= 3000) {
+                if (players[i].account.getBalance() >= 3000) {
                     gameFinished = true;
                     View.print(stringContainer.getString("player_win"), players[i].getName());
                     break;

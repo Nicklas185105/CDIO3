@@ -1,7 +1,5 @@
 package main.Spil;
 
-import java.util.Random;
-
 /**
  * This class is creating and controlling the dices.
  */
@@ -15,23 +13,23 @@ public class DiceCup {
      * This method is creating the 2 dices the application uses.
      */
     public DiceCup() {
-        dices = new Dice[] { new Dice(), new Dice() }; // There is always only 2 dices (final)
+        dices = new Dice[] { new Dice(6), new Dice(6) }; // There is always only 2 dices (final)
     }
 
     /**
      * This method is rolling the dices, while storing them in a list.
      * @return Is returning the list which is holding the dices value.
      */
-    public int[] castDices() {
-        int[] cast = new int[dices.length];
+    public int[] rollDices() {
+        int[] roll = new int[dices.length];
 
         // We are here rolling the dices.
         for (int i = 0; i < dices.length; i++) {
             Dice dice = dices[i];
-            cast[i] = dice.cast();
+            roll[i] = dice.roll();
         }
 
-        return cast;
+        return roll;
     }
 
     /**
@@ -40,7 +38,7 @@ public class DiceCup {
      */
     public int getFaceValue() {
         int sum = 0;
-        for (int i = 0; i < dices.length; i++) { sum += dices[i].getVaule(); }
+        for (int i = 0; i < dices.length; i++) { sum += dices[i].getValue(); }
         return sum;
     }
 
