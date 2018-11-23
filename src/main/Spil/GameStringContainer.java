@@ -33,7 +33,7 @@ public class GameStringContainer {
      * @param filePath Is the path of where the file is located.
      * @throws FileNotFoundException Is for if the program can't find the file.
      */
-    GameStringContainer(String filePath) throws FileNotFoundException {
+    public GameStringContainer(String filePath) throws FileNotFoundException {
         parseFile(filePath);
     }
 

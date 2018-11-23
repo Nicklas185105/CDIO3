@@ -1,5 +1,9 @@
-package main.Spil;
+package main.Spil.Controller;
 
+import main.Spil.DiceCup;
+import main.Spil.Field;
+import main.Spil.FieldFactory;
+import main.Spil.GameStringContainer;
 import main.Spil.Model.Player;
 import main.Spil.View.View;
 
@@ -85,17 +89,17 @@ public class DiceGame {
                 View.print(stringContainer.getString("field_land"), fieldLandedOn.name);
                 View.print(fieldLandedOn.fieldText);
 
-                players[i].account.changeBalance(fieldLandedOn.value);
+                players[i].changeBalance(fieldLandedOn.value);
 
                 View.print("");
-                View.print(stringContainer.getString("balance"), players[i].account.getBalance());
+                View.print(stringContainer.getString("balance"), players[i].getBalance());
 
                 if (fieldLandedOn.getsAnotherTurn) {
                     i--;
                     continue;
                 }
 
-                if (players[i].account.getBalance() >= 3000) {
+                if (players[i].getBalance() >= 3000) {
                     gameFinished = true;
                     View.print(stringContainer.getString("player_win"), players[i].getName());
                     break;
