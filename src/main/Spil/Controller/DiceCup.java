@@ -1,4 +1,6 @@
-package main.Spil;
+package main.Spil.Controller;
+
+import main.Spil.Model.Dice;
 
 /**
  * This class is creating and controlling the dices.

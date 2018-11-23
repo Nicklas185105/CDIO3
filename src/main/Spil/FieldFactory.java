@@ -1,5 +1,7 @@
 package main.Spil;
 
+import main.Spil.Model.LanguagePack;
+
 /**
  * This class is creating the different fields.
  *
@@ -12,8 +14,8 @@ package main.Spil;
  */
 public class FieldFactory {
 
-    GameStringContainer stringContainer;
-    public FieldFactory(GameStringContainer stringContainer) {
+    LanguagePack stringContainer;
+    public FieldFactory(LanguagePack stringContainer) {
         this.stringContainer = stringContainer;
     }
 

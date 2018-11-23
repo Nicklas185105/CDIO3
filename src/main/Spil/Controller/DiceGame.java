@@ -1,9 +1,8 @@
 package main.Spil.Controller;
 
-import main.Spil.DiceCup;
 import main.Spil.Field;
 import main.Spil.FieldFactory;
-import main.Spil.GameStringContainer;
+import main.Spil.Model.LanguagePack;
 import main.Spil.Model.Player;
 import main.Spil.View.View;
 
@@ -21,7 +20,7 @@ public class DiceGame {
     /**
      * Defines GameStringContainer as stringContainer.
      */
-    GameStringContainer stringContainer;
+    LanguagePack stringContainer;
     FieldFactory fieldFactory;
 
     /**
@@ -47,7 +46,7 @@ public class DiceGame {
         }
 
         try {
-            stringContainer = new GameStringContainer(String.format("resources/%s_game_strings.txt", language));
+            stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
         } catch (FileNotFoundException fnfException) {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }

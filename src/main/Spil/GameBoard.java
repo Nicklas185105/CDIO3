@@ -1,10 +1,12 @@
 package main.Spil;
 
+import main.Spil.Model.LanguagePack;
+
 public class GameBoard {
     Field[] fields;
-    GameStringContainer stringContainer;
+    LanguagePack stringContainer;
 
-    GameBoard(GameStringContainer stringContainer) {
+    GameBoard(LanguagePack stringContainer) {
         fields = getFields();
         this.stringContainer = stringContainer;
     }

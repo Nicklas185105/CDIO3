@@ -1,4 +1,4 @@
-package main.Spil;
+package main.Spil.Model;
 
 import java.util.Random;
 
