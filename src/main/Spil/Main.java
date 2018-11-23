@@ -1,5 +1,7 @@
 package main.Spil;
 
+import main.Spil.Controller.DiceGame;
+
 import java.io.IOException;
 
 /**
@@ -12,7 +14,7 @@ import java.io.IOException;
  * @author Hans, Nicklas, Rasmus, Mathias, Jeppe and Anton.
  * @version 1.0.1
  */
-public class Game {
+public class Main {
 
     /**
      * This method is for running the application.
@@ -20,8 +22,7 @@ public class Game {
      * @throws IOException Is used for...
      */
     public static void main(String[] args) throws IOException  {
-        DiceGame diceGame = new DiceGame();
-        diceGame.startGame();
+        new DiceGame().startGame();
     }
 }
 
