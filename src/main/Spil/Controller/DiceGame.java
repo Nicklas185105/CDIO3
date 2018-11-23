@@ -1,10 +1,10 @@
 package main.Spil.Controller;
 
-import main.Spil.Field;
+import main.Spil.Model.Field;
 import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 import main.Spil.Model.Player;
-import main.Spil.View.View;
+import main.Spil.View.ConsoleView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,15 +24,21 @@ public class DiceGame {
     GameBoard gameBoard;
 
     /**
+     * Set user interface
+     */
+    ConsoleView view = new ConsoleView();
+
+    /**
      * This method is creating a new GameStringContainer with a file path and calls the method getPlayers.
      */
     public DiceGame() {
-        View.print("Press 1 for english");
-        View.print("Tryk 2 for dansk");
+
+        view.print("Press 1 for english");
+        view.print("Tryk 2 for dansk");
 
         int i = 0;
         while (true) {
-            i = View.readInt();
+            i = view.readInt();
             if (i >= 1 && i <= 2) {
                 break;
             }
@@ -41,8 +47,12 @@ public class DiceGame {
 
         String language = "";
         switch (i) {
-            case 1: language = "EN"; break;
-            case 2: language = "DA"; break;
+            case 1:
+                language = "EN";
+                break;
+            case 2:
+                language = "DA";
+                break;
         }
 
         try {
@@ -59,9 +69,9 @@ public class DiceGame {
      * This method is for starting the game.
      *
      * <p>
-     *     The method is running the application with turns.
-     *     That means that one player is playing at a time.
-     *     This method is also printing out the information for the player with the class view.
+     * The method is running the application with turns.
+     * That means that one player is playing at a time.
+     * This method is also printing out the information for the player with the class view.
      * </p>
      *
      * @throws IOException Is used for...
@@ -72,26 +82,26 @@ public class DiceGame {
 
         boolean gameFinished = false;
 
-        while(!gameFinished){
+        while (!gameFinished) {
 
             //Runs the game with turns swapping between the players, until the variable "gameFinished" is true.
-            for (int i = 0; i<players.length; i++) {
+            for (int i = 0; i < players.length; i++) {
                 DiceCup diceCup = new DiceCup();
-                View.print("-------------------------------------------------------------------------------------------------------------------------");
-                View.print(stringContainer.getString("roll_dice"), players[i].getName());
+                view.print("-------------------------------------------------------------------------------------------------------------------------");
+                view.print(stringContainer.getString("roll_dice"), players[i].getName());
                 System.in.read();
 
                 System.out.println();
                 diceCup.rollDice();
-                Field fieldLandedOn = gameBoard.getFields()[diceCup.getFaceValue()];
+                Field fieldLandedOn = gameBoard.getFields()[diceCup.getFaceValue() - 1];
 
-                View.print(stringContainer.getString("field_land"), fieldLandedOn.name);
-                View.print(fieldLandedOn.fieldText);
+                view.print(stringContainer.getString("field_land"), fieldLandedOn.name);
+                view.print(fieldLandedOn.fieldText);
 
                 players[i].changeBalance(fieldLandedOn.value);
 
-                View.print("");
-                View.print(stringContainer.getString("balance"), players[i].getBalance());
+                view.print("");
+                view.print(stringContainer.getString("balance"), players[i].getBalance());
 
                 if (fieldLandedOn.getsAnotherTurn) {
                     i--;
@@ -100,7 +110,7 @@ public class DiceGame {
 
                 if (players[i].getBalance() >= 3000) {
                     gameFinished = true;
-                    View.print(stringContainer.getString("player_win"), players[i].getName());
+                    view.print(stringContainer.getString("player_win"), players[i].getName());
                     break;
                 }
             }
@@ -110,19 +120,20 @@ public class DiceGame {
 
     /**
      * This method is used for getting the players names.
+     *
      * @return Returning the players names.
      */
     Player[] getPlayers() {
-        View.print(stringContainer.getString("amount_players"));
+        view.print(stringContainer.getString("amount_players"));
         int n;
-        while ((n = View.readInt()) <= 0) {
-            View.print(stringContainer.getString("invalid_amount_players"));
+        while ((n = view.readInt()) <= 0) {
+            view.print(stringContainer.getString("invalid_amount_players"));
         }
 
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
-            View.print(stringContainer.getString("give_player_name"), i+1);
-            players[i] = new Player(View.readString(), 1000);
+            view.print(stringContainer.getString("give_player_name"), i + 1);
+            players[i] = new Player(view.readString(), 1000);
         }
 
         return players;

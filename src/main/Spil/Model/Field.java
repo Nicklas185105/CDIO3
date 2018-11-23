@@ -1,4 +1,4 @@
-package main.Spil;
+package main.Spil.Model;
 
 /**
  * This class is controlling each field.
@@ -38,7 +38,7 @@ public class Field {
         this.name = name;
         this.value = value;
         this.fieldText = fieldText;
-        getsAnotherTurn = false;
+        this.getsAnotherTurn = false;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Field {
      * @param fieldText       The description of the field.
      * @param getsAnotherTurn The variable that decides if the player is getting another turn.
      */
-    Field(String name, int value, String fieldText, boolean getsAnotherTurn) {
+    public Field(String name, int value, String fieldText, boolean getsAnotherTurn) {
         this.name = name;
         this.value = value;
         this.fieldText = fieldText;

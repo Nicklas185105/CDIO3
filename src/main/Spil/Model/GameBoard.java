@@ -1,8 +1,5 @@
 package main.Spil.Model;
 
-import main.Spil.Field;
-import main.Spil.Model.LanguagePack;
-
 public class GameBoard {
     private LanguagePack stringContainer;
 

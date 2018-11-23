@@ -9,17 +9,17 @@ import java.util.Scanner;
  * It allows the programmer to change the user interface at any time with no need to change any other classes.
  * </p>
  */
-public class View {
+public class ConsoleView {
 
     /**
      * Prints a message to the user.
      * @param message The string to be printed to the user.
      */
-    public static void print(String message) {
+    public void print(String message) {
         System.out.println(message);
     }
 
-    public static void print(String message, Object... args) {
+    public void print(String message, Object... args) {
         System.out.printf(message + "\n", args);
     }
 
@@ -27,7 +27,7 @@ public class View {
      * Read an integer from the user.
      * @return integer from console.
      */
-    public static int readInt() {
+    public int readInt() {
         Scanner s = new Scanner(System.in);
         int input = s.nextInt();
         return input;
@@ -38,7 +38,7 @@ public class View {
      * Read string-formatted user input.
      * @return string from console.
      */
-    public static String readString() {
+    public String readString() {
         Scanner s = new Scanner(System.in);
         String input = s.next();
         return input;
