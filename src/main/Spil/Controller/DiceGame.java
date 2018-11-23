@@ -123,7 +123,7 @@ public class DiceGame {
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
             View.print(stringContainer.getString("give_player_name"), i+1);
-            players[i] = new Player(View.readString());
+            players[i] = new Player(View.readString(), 1000);
         }
 
         return players;

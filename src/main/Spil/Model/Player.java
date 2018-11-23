@@ -19,7 +19,7 @@ public class Player {
      * This method is setting a name for the player and creating balance for the player.
      * @param name Is used for defining the name of the player.
      */
-    public Player(String name){
+    public Player(String name, int balance){
         this.name = name;
         this.balance = balance;
     }
@@ -29,7 +29,7 @@ public class Player {
      * @return Returning the name of the player.
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
 
