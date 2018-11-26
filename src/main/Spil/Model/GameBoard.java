@@ -43,6 +43,7 @@ public class GameBoard {
                 new Field("Bowlinghallen", 4, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
                 new Field("Zoo", 4, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
                 new Field("Chance", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Chance),
+                new Field("Vandlandet", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
                 new Field("Strandpromenaden", 5, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
         };
     }
