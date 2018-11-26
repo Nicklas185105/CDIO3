@@ -9,6 +9,8 @@ public class Player {
      */
     private String name;
 
+    private FigureCard figureCard;
+
     /**
      * Defines the balance.
      */
@@ -19,9 +21,10 @@ public class Player {
      * This method is setting a name for the player and creating balance for the player.
      * @param name Is used for defining the name of the player.
      */
-    public Player(String name, int balance){
+    public Player(String name, int balance, FigureCard figureCard){
         this.name = name;
         this.balance = balance;
+        this.figureCard = figureCard;
     }
 
     /**
