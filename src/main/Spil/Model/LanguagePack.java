@@ -1,4 +1,4 @@
-package main.Spil;
+package main.Spil.Model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,11 +17,11 @@ import java.util.Scanner;
  * </p>
  *
  */
-public class GameStringContainer {
+public class LanguagePack {
     /**
      *
      */
-    Dictionary<String, String> gameStrings;
+    Hashtable<String, String> gameStrings;
 
     /**
      * This constructor is used for calling the method parseFile
@@ -33,7 +33,7 @@ public class GameStringContainer {
      * @param filePath Is the path of where the file is located.
      * @throws FileNotFoundException Is for if the program can't find the file.
      */
-    GameStringContainer(String filePath) throws FileNotFoundException {
+    public LanguagePack(String filePath) throws FileNotFoundException {
         parseFile(filePath);
     }
 

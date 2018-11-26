@@ -8,5 +8,22 @@
     <artifactId>CDIO3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>Matador_GUI-repository</id>
+            <url>https://github.com/diplomit-dtu/Matador_GUI/raw/repository</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>diplomitdtu</groupId>
+            <artifactId>matadorgui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
