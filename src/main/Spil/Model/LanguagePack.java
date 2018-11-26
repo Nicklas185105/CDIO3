@@ -21,7 +21,7 @@ public class LanguagePack {
     /**
      *
      */
-    HashMap<String, String> gameStrings;
+    Hashtable<String, String> gameStrings;
 
     /**
      * This constructor is used for calling the method parseFile

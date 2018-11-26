@@ -1,6 +1,7 @@
 package main.Spil;
 
 import main.Spil.Controller.DiceGame;
+import main.Spil.View.GUI_View;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class Main {
      * @throws IOException Is used for...
      */
     public static void main(String[] args) throws IOException  {
-        new DiceGame().startGame();
+        new GUI_View();
     }
 }
 
