@@ -21,18 +21,30 @@ public class GameBoard {
 
     public Field[] getFields() {
          return new Field[]{
-                new Field("TestField", 0, "Test"),
-                new Field("Tower", 250, stringContainer.getString("field_tower")),
-                new Field("Crater", -100, stringContainer.getString("field_crater")),
-                new Field("Palace gates", 100, stringContainer.getString("field_palace_gates")),
-                new Field("Cold Desert", -20, stringContainer.getString("field_cold_desert")),
-                new Field("Walled City", 180, stringContainer.getString("field_walled_city")),
-                new Field("Monastary", 0, stringContainer.getString("field_monastary")),
-                new Field("Black Cave", -70, stringContainer.getString("field_black_cave")),
-                new Field("Huts in the mountain", 60, stringContainer.getString("field_huts_in_the_mountain")),
-                new Field("The Werewall", -80, stringContainer.getString("field_the_werewall")),
-                new Field("The Pit", -50, stringContainer.getString("field_the_pit")),
-                new Field("Goldmine", 650, stringContainer.getString("field_goldmine"))
+                new Field("Start", 0, "Start"),
+                new Field("Burgerbaren", 1, stringContainer.getString("field_tower"), Field.GUI_Type.Street),
+                new Field("Pizzariaet", 1, stringContainer.getString("field_crater"), Field.GUI_Type.Street),
+                new Field("Chance", 0, stringContainer.getString("field_crater"), Field.GUI_Type.Chance),
+                new Field("Slikbutikken", 1, stringContainer.getString("field_palace_gates"), Field.GUI_Type.Street),
+                new Field("Isbutikken", 1, stringContainer.getString("field_cold_desert"), Field.GUI_Type.Street),
+                new Field("Fængsel", 0, stringContainer.getString("field_walled_city"), Field.GUI_Type.Jail),
+                new Field("Museet", 2, stringContainer.getString("field_monastary"), Field.GUI_Type.Street),
+                new Field("Biblioteket", 2, stringContainer.getString("field_black_cave"), Field.GUI_Type.Street),
+                new Field("Chance", 0, stringContainer.getString("field_huts_in_the_mountain"), Field.GUI_Type.Chance),
+                new Field("Skaterparken", 2, stringContainer.getString("field_the_werewall"), Field.GUI_Type.Street),
+                new Field("Swimmingpool", 2, stringContainer.getString("field_the_pit"), Field.GUI_Type.Street),
+                new Field("Parkering", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Spillehallen", 3, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Biografen", 3, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Chance", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Chance),
+                new Field("Legetøjsbutikken", 3, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Dyrehandlen", 3, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Gå i fængsel", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Jail),
+                new Field("Bowlinghallen", 4, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Zoo", 4, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Chance", 0, stringContainer.getString("field_goldmine"), Field.GUI_Type.Chance),
+                new Field("Vandlandet", 5, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
+                new Field("Strandpromenaden", 5, stringContainer.getString("field_goldmine"), Field.GUI_Type.Street),
         };
     }
 

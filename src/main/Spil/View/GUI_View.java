@@ -13,6 +13,7 @@ public class GUI_View {
         String language = "DA";
         GameBoard board = new GameBoard(new LanguagePack(String.format("resources/DA_game_strings.txt", language)));
         new GUI(board.getGuiFields());
+
     }
 
 }
