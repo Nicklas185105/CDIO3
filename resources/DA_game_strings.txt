@@ -85,3 +85,6 @@ Du landede på vandlandet
 field_strand_promenaden
 Du landede på strand promenaden
 
+field_prøv_lykken
+Prøv lykken!
+
