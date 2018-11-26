@@ -53,16 +53,24 @@ public class Field {
         else this.fieldText = fieldText;
     }
 
+
     public GUI_Field toGUI() {
         String priceTxt = String.format("%d kr", value);
 
         switch (fieldType) {
-            case Street: return new GUI_Street(name, priceTxt, fieldText, "Leje: 50", Color.YELLOW, Color.BLACK);
-            case Brewery: return new GUI_Brewery("default", name, priceTxt, fieldText, "10 x [Terningslag]", Color.BLACK, Color.WHITE);
-            case Jail: return new GUI_Jail("default", name, priceTxt, fieldText, new Color(125, 125, 125), Color.BLACK);
-            case Chance: return new GUI_Chance(name, priceTxt, fieldText, new Color(204, 204, 204), Color.BLACK);
-            case Shipping: return new GUI_Shipping("default", name, priceTxt, fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
-            case Tax: return new GUI_Tax(name, priceTxt, fieldText, Color.GRAY, Color.BLACK);
+            case Street_Brown: return new GUI_Street(name, priceTxt, fieldText, "Leje: 1", new Color(134, 69, 18), Color.BLACK);
+            case Street_Cyan: return new GUI_Street(name, priceTxt, fieldText, "Leje: 1", Color.CYAN, Color.BLACK);
+            case Street_Purple: return new GUI_Street(name, priceTxt, fieldText, "Leje: 2", Color.MAGENTA, Color.BLACK);
+            case Street_Orange: return new GUI_Street(name, priceTxt, fieldText, "Leje: 2", Color.ORANGE, Color.BLACK);
+            case Street_Red: return new GUI_Street(name, priceTxt, fieldText, "Leje: 3", Color.RED, Color.BLACK);
+            case Street_Yellow: return new GUI_Street(name, priceTxt, fieldText, "Leje: 3", Color.YELLOW, Color.BLACK);
+            case Street_Green: return new GUI_Street(name, priceTxt, fieldText, "Leje: 4", Color.GREEN, Color.BLACK);
+            case Street_Blue: return new GUI_Street(name, priceTxt, fieldText, "Leje: 5", Color.BLUE, Color.BLACK);
+            case Brewery: return new GUI_Brewery("default", name, "", fieldText, "", Color.BLACK, Color.WHITE);
+            case Jail: return new GUI_Jail("default", name, "", fieldText, new Color(68, 68, 68), Color.BLACK);
+            case Chance: return new GUI_Chance(name, "", fieldText, new Color(204, 182, 0), Color.BLACK);
+            case Shipping: return new GUI_Shipping("default", name, "", fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
+            case Tax: return new GUI_Tax(name, "+2 til dig", fieldText, Color.GRAY, Color.BLACK);
             case Empty: return new GUI_Empty();
         }
 
@@ -76,6 +84,14 @@ public class Field {
         Jail,
         Shipping,
         Street,
+        Street_Brown,
+        Street_Cyan,
+        Street_Purple,
+        Street_Orange,
+        Street_Red,
+        Street_Yellow,
+        Street_Green,
+        Street_Blue,
         Tax,
         Empty
     }
