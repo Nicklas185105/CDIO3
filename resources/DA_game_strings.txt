@@ -19,6 +19,11 @@ Indtast antallet af spillere
 invalid_amount_players
 Ugyldigt antal spillere! Prøv igen!
 
+select_card_type
+Vælg et figurkort
+
+illegal_card_type
+Ugyldig korttype, prøv igen
 
 field_tower
 Du har fundet tårne, og finder gamle skatte. Du får 250!

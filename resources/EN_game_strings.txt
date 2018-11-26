@@ -19,6 +19,12 @@ Enter amount of players
 invalid_amount_players
 Invalid amount of players! Try again!
 
+select_card_type
+Choose a figure card
+
+illegal_card_type
+Illegal card type, try again
+
 field_tower
 You have found the tower and the treasures inside it! You get 250!
 

@@ -1,9 +1,6 @@
 package main.Spil.Controller;
 
-import main.Spil.Model.Field;
-import main.Spil.Model.GameBoard;
-import main.Spil.Model.LanguagePack;
-import main.Spil.Model.Player;
+import main.Spil.Model.*;
 import main.Spil.View.ConsoleView;
 
 import java.io.FileNotFoundException;
@@ -133,7 +130,23 @@ public class DiceGame {
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
             view.print(stringContainer.getString("give_player_name"), i + 1);
-            players[i] = new Player(view.readString(), 1000);
+
+            String name = view.readString();
+
+            FigureCard figureCard = null;
+            while (true) {
+                view.print(stringContainer.getString("select_card_type"));
+
+                try {
+                    figureCard = new FigureCard(Enum.valueOf(FigureCard.cardType.class, view.readString()));
+                    break;
+                } catch (IllegalArgumentException e) {
+                    view.print(stringContainer.getString("illegal_card_type"));
+                }
+            }
+            players[i] = new Player(name, 1000,
+                    figureCard
+            );
         }
 
         return players;
