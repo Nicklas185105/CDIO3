@@ -47,6 +47,13 @@ public class Field {
         this.fieldType = GUI_Type.Street;
     }
 
+    public Field(String name, int value, String fieldText, GUI_Type fieldType) {
+        this.name = name;
+        this.value = value;
+        this.fieldText = fieldText;
+        this.fieldType = fieldType;
+    }
+
     public GUI_Field toGUI() {
         String priceTxt = String.format("%d kr", value);
 
