@@ -41,17 +41,16 @@ public class Field {
      * @param fieldText The description of the field.
      */
     public Field(String name, int value, String fieldText) {
-        this.name = name;
-        this.value = value;
-        this.fieldText = fieldText;
-        this.fieldType = GUI_Type.Street;
+        this(name, value, fieldText, GUI_Type.Street);
     }
 
     public Field(String name, int value, String fieldText, GUI_Type fieldType) {
         this.name = name;
         this.value = value;
-        this.fieldText = fieldText;
         this.fieldType = fieldType;
+
+        if (fieldText == null) this.fieldText = "";
+        else this.fieldText = fieldText;
     }
 
     public GUI_Field toGUI() {
