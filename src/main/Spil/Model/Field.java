@@ -53,16 +53,17 @@ public class Field {
         else this.fieldText = fieldText;
     }
 
+
     public GUI_Field toGUI() {
         String priceTxt = String.format("%d kr", value);
 
         switch (fieldType) {
             case Street: return new GUI_Street(name, priceTxt, fieldText, "Leje: 50", Color.YELLOW, Color.BLACK);
-            case Brewery: return new GUI_Brewery("default", name, priceTxt, fieldText, "10 x [Terningslag]", Color.BLACK, Color.WHITE);
-            case Jail: return new GUI_Jail("default", name, priceTxt, fieldText, new Color(125, 125, 125), Color.BLACK);
-            case Chance: return new GUI_Chance(name, priceTxt, fieldText, new Color(204, 204, 204), Color.BLACK);
-            case Shipping: return new GUI_Shipping("default", name, priceTxt, fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
-            case Tax: return new GUI_Tax(name, priceTxt, fieldText, Color.GRAY, Color.BLACK);
+            case Brewery: return new GUI_Brewery("default", name, "", fieldText, "", Color.BLACK, Color.WHITE);
+            case Jail: return new GUI_Jail("default", name, "", fieldText, new Color(125, 125, 125), Color.BLACK);
+            case Chance: return new GUI_Chance(name, "", fieldText, new Color(204, 204, 204), Color.BLACK);
+            case Shipping: return new GUI_Shipping("default", name, "", fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
+            case Tax: return new GUI_Tax(name, "+2 til dig", fieldText, Color.GRAY, Color.BLACK);
             case Empty: return new GUI_Empty();
         }
 
