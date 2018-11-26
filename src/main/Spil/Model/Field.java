@@ -1,11 +1,6 @@
 package main.Spil.Model;
 
-import gui_codebehind.GUI_FieldFactory;
-import gui_fields.GUI_Brewery;
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Street;
-import gui_fields.GUI_Tax;
-
+import gui_fields.*;
 import java.awt.*;
 
 /**
@@ -55,12 +50,13 @@ public class Field {
     public GUI_Field toGUI() {
         String priceTxt = String.format("%d kr", value);
 
-        if (fieldType == GUI_Type.Street) {
-            return new GUI_Street(name, priceTxt, fieldText, "Leje: 50", Color.YELLOW, Color.BLACK);
-        }
-
-        if (fieldType == GUI_Type.Brewery) {
-            //return new GUI_Brewery("default", name, priceTxt, fieldText, Color.black);
+        switch (fieldType) {
+            case Street: return new GUI_Street(name, priceTxt, fieldText, "Leje: 50", Color.YELLOW, Color.BLACK);
+            case Brewery: return new GUI_Brewery("default", name, priceTxt, fieldText, "10 x [Terningslag]", Color.BLACK, Color.WHITE);
+            case Jail: return new GUI_Jail("default", name, priceTxt, fieldText, new Color(125, 125, 125), Color.BLACK);
+            case Chance: return new GUI_Chance(name, priceTxt, fieldText, new Color(204, 204, 204), Color.BLACK);
+            case Shipping: return new GUI_Shipping("default", name, priceTxt, fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
+            case Tax: return new GUI_Tax(name, priceTxt, fieldText, Color.GRAY, Color.BLACK);
         }
 
         throw new IllegalArgumentException();
@@ -68,14 +64,10 @@ public class Field {
 
 
     public enum GUI_Type {
-        Board,
-        Brewery,
-        Car,
         Chance,
-        Empty,
+        Brewery,
         Jail,
         Shipping,
-        Start,
         Street,
         Tax
     }
