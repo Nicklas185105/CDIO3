@@ -9,8 +9,6 @@ public class Player extends GUI_Player{
     /**
      * Defines the name of the player.
      */
-    private String name;
-
     private FigureCard figureCard;
 
     /**
@@ -37,7 +35,7 @@ public class Player extends GUI_Player{
      * @return Returning the name of the player.
      */
     public String getName() {
-        return this.name;
+        return super.getName();
     }
 
 
@@ -59,7 +57,7 @@ public class Player extends GUI_Player{
     }
 
     public GUI_Player getGUIPlayer(){
-        return new GUI_Player(name, balance);
+        return new GUI_Player(super.getName(), balance);
     }
 
 
