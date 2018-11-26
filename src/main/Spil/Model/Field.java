@@ -63,6 +63,7 @@ public class Field {
             case Chance: return new GUI_Chance(name, priceTxt, fieldText, new Color(204, 204, 204), Color.BLACK);
             case Shipping: return new GUI_Shipping("default", name, priceTxt, fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
             case Tax: return new GUI_Tax(name, priceTxt, fieldText, Color.GRAY, Color.BLACK);
+            case Empty: return new GUI_Empty();
         }
 
         throw new IllegalArgumentException();
@@ -75,7 +76,8 @@ public class Field {
         Jail,
         Shipping,
         Street,
-        Tax
+        Tax,
+        Empty
     }
 }
 
