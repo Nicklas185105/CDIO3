@@ -1,5 +1,6 @@
 package main.Spil.Model;
 
+
 public class GameBoard {
     private LanguagePack stringContainer;
 
@@ -18,7 +19,7 @@ public class GameBoard {
                 new Field("Monastary", 0, stringContainer.getString("field_monastary")),
                 new Field("Black Cave", -70, stringContainer.getString("field_black_cave")),
                 new Field("Huts in the mountain", 60, stringContainer.getString("field_huts_in_the_mountain")),
-                new Field("The Werewall", -80, stringContainer.getString("field_the_werewall"), true),
+                new Field("The Werewall", -80, stringContainer.getString("field_the_werewall")),
                 new Field("The Pit", -50, stringContainer.getString("field_the_pit")),
                 new Field("Goldmine", 650, stringContainer.getString("field_goldmine"))
         };
