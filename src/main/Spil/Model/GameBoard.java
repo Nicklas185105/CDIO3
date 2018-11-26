@@ -1,6 +1,8 @@
 package main.Spil.Model;
 
 
+import gui_fields.GUI_Field;
+
 public class GameBoard {
     private LanguagePack stringContainer;
 
@@ -8,9 +10,18 @@ public class GameBoard {
         this.stringContainer = stringContainer;
     }
 
+    public GUI_Field[] getGuiFields() {
+        Field[] fields = getFields();
+        GUI_Field[] gui_fields = new GUI_Field[fields.length];
+        for (int i = 0; i < fields.length; i++){
+            gui_fields[i] = fields[i].toGUI();
+        }
+        return gui_fields;
+    }
+
     public Field[] getFields() {
          return new Field[]{
-                new Field("TestField", 0, stringContainer.getString("SampleField")),
+                new Field("TestField", 0, "Test"),
                 new Field("Tower", 250, stringContainer.getString("field_tower")),
                 new Field("Crater", -100, stringContainer.getString("field_crater")),
                 new Field("Palace gates", 100, stringContainer.getString("field_palace_gates")),
@@ -23,7 +34,7 @@ public class GameBoard {
                 new Field("The Pit", -50, stringContainer.getString("field_the_pit")),
                 new Field("Goldmine", 650, stringContainer.getString("field_goldmine"))
         };
-
-
     }
+
+
 }

@@ -1,5 +1,13 @@
 package main.Spil.Model;
 
+import gui_codebehind.GUI_FieldFactory;
+import gui_fields.GUI_Brewery;
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Street;
+import gui_fields.GUI_Tax;
+
+import java.awt.*;
+
 /**
  * This class is controlling each field.
  *
@@ -24,6 +32,12 @@ public class Field {
      */
     public final String fieldText;
 
+
+    /*
+    *
+    * */
+    public final GUI_Type fieldType;
+
     /**
      * This method is for creating fields, where the player can't get another turn.
      *
@@ -35,7 +49,35 @@ public class Field {
         this.name = name;
         this.value = value;
         this.fieldText = fieldText;
+        this.fieldType = GUI_Type.Street;
     }
 
+    public GUI_Field toGUI() {
+        String priceTxt = String.format("%d kr", value);
+
+        if (fieldType == GUI_Type.Street) {
+            return new GUI_Street(name, priceTxt, fieldText, "Leje: 50", Color.YELLOW, Color.BLACK);
+        }
+
+        if (fieldType == GUI_Type.Brewery) {
+            //return new GUI_Brewery("default", name, priceTxt, fieldText, Color.black);
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+
+    public enum GUI_Type {
+        Board,
+        Brewery,
+        Car,
+        Chance,
+        Empty,
+        Jail,
+        Shipping,
+        Start,
+        Street,
+        Tax
+    }
 }
 
