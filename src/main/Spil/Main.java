@@ -1,5 +1,7 @@
 package main.Spil;
 
+import gui_codebehind.GUI_Center;
+import gui_fields.GUI_Board;
 import main.Spil.Controller.DiceGame;
 import main.Spil.View.GUI_View;
 
