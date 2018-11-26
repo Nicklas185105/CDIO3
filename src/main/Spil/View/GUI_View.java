@@ -1,22 +1,24 @@
 package main.Spil.View;
 
-import gui_fields.GUI_Board;
-import gui_fields.GUI_Field;
 import gui_main.GUI;
 import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class GUI_View {
+    private GUI gui;
     public GUI_View() throws IOException {
         String language = "DA";
         GameBoard board = new GameBoard(new LanguagePack(String.format("resources/DA_game_strings.txt", language)));
 
-        new GUI_Board(board.getGuiFields());
+        gui = new GUI(board.getGuiFields());
 
 
+    }
+
+    public GUI getGUI(){
+        return gui;
     }
 
 }
