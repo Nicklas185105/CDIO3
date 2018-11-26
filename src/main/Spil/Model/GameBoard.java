@@ -1,5 +1,6 @@
 package main.Spil.Model;
 
+
 public class GameBoard {
     private LanguagePack stringContainer;
 
