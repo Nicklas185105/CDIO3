@@ -100,10 +100,6 @@ public class DiceGame {
                 view.print("");
                 view.print(stringContainer.getString("balance"), players[i].getBalance());
 
-                if (fieldLandedOn.getsAnotherTurn) {
-                    i--;
-                    continue;
-                }
 
                 if (players[i].getBalance() >= 3000) {
                     gameFinished = true;
@@ -144,9 +140,7 @@ public class DiceGame {
                     view.print(stringContainer.getString("illegal_card_type"));
                 }
             }
-            players[i] = new Player(name, 1000,
-                    figureCard
-            );
+            players[i] = new Player(name, 24 - 2 * n, figureCard);
         }
 
         return players;

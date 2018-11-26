@@ -18,10 +18,7 @@ public class Field {
      * <p> The Value of the field, is how much money the player is getting or how much money the player is losing.</p>
      */
     public final int value;
-    /**
-     * Defines if the player is getting another turn.
-     */
-    public final boolean getsAnotherTurn;
+
     /**
      * Defines the fields description.
      */
@@ -38,22 +35,7 @@ public class Field {
         this.name = name;
         this.value = value;
         this.fieldText = fieldText;
-        this.getsAnotherTurn = false;
     }
 
-    /**
-     * This method is for creating the field, where the player can get another turn.
-     *
-     * @param name            The name of the field.
-     * @param value           The value of the field.
-     * @param fieldText       The description of the field.
-     * @param getsAnotherTurn The variable that decides if the player is getting another turn.
-     */
-    public Field(String name, int value, String fieldText, boolean getsAnotherTurn) {
-        this.name = name;
-        this.value = value;
-        this.fieldText = fieldText;
-        this.getsAnotherTurn = getsAnotherTurn;
-    }
 }
 
