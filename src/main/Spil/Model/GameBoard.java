@@ -8,8 +8,7 @@ public class GameBoard {
     }
 
     public Field[] getFields() {
-        Field[] fields;
-        fields = new Field[]{
+         return new Field[]{
                 new Field("TestField", 0, stringContainer.getString("SampleField")),
                 new Field("Tower", 250, stringContainer.getString("field_tower")),
                 new Field("Crater", -100, stringContainer.getString("field_crater")),
@@ -23,6 +22,7 @@ public class GameBoard {
                 new Field("The Pit", -50, stringContainer.getString("field_the_pit")),
                 new Field("Goldmine", 650, stringContainer.getString("field_goldmine"))
         };
-        return fields;
+
+
     }
 }
