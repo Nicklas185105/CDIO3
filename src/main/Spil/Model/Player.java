@@ -18,10 +18,7 @@ public class Player extends GUI_Player {
      * Defines the balance.
      */
     private int balance = 0;
-    int currentField = 0;
-    public int previous_position;
-    public int current_position = 0;
-
+    private int position  = 0;
 
     /**
      * This method is setting a name for the player and creating balance for the player.
@@ -42,16 +39,8 @@ public class Player extends GUI_Player {
 
     }
 
-    private GUI_Car getCar(String type){
-        if (type == "UFO") {
-            return new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL);
-        } else if (type == "Racecar") {
-            return new GUI_Car(null, null, GUI_Car.Type.RACECAR, GUI_Car.Pattern.FILL);
-        } else if (type == "Car") {
-            return new GUI_Car(null, null, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
-        } else {
-            return new GUI_Car(null, null, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL);
-        }
+    public Player(String name, int balance) {
+        super(name, balance);
     }
 
 
@@ -86,20 +75,6 @@ public class Player extends GUI_Player {
         return new GUI_Player(super.getName(), balance);
     }
 
-    public void setCurrent_position(int l, int o) {
-        current_position += l + o;
-    }
-
-    public int getCurrent_position() {
-        return current_position;
-    }
-
-    public void setPrevious_position(int l, int o) {
-        previous_position += l + o;
-    }
-
-    public int getPrevious_position() {
-        return previous_position;
-    }
-
+    public int getPosition() { return position;}
+    public void setPosition(int position) { this.position = position; }
 }
