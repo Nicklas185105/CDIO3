@@ -3,16 +3,10 @@ package main.Spil.Model;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 
-import java.awt.*;
-
 /**
  * This class is for creating the players.
  */
 public class Player extends GUI_Player {
-    /**
-     * Defines the name of the player.
-     */
-    private FigureCard figureCard;
 
     /**
      * Defines the balance.
@@ -26,15 +20,7 @@ public class Player extends GUI_Player {
      * @param name Is used for defining the name of the player.
      */
     public Player(String name, int balance, String type) {
-        /*super(name, balance,
-                type == "UFO" ?
-                        new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL) :
-                type == "Car" ?
-                        new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL) :
-                type == "Racecar" ?
-                        new GUI_Car(null, null, GUI_Car.Type.RACECAR, GUI_Car.Pattern.FILL):
-                        new GUI_Car(null, null, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL)
-        );*/
+
         super(name, balance, new GUI_Car(null, null,  (GUI_Car.Type) Enum.valueOf(GUI_Car.Type.class, type.toString().toUpperCase()), GUI_Car.Pattern.FILL));
 
     }
