@@ -12,7 +12,7 @@ public class GUI_View {
     private GUI gui;
     public GUI_View() throws IOException {
         String language = "DA";
-        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/DA_game_strings.txt", language)));
+        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/EN_game_strings.txt", language)));
 
         gui = new GUI(board.getGuiFields());
 
