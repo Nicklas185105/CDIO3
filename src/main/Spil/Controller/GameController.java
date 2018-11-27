@@ -70,12 +70,14 @@ public class GameController {
         }
     }
 
+    // Recursive function that ensures that the car position is between 0 and 23 (i.e. on board)
     private int clampPosition(int position) {
         if (position < 0) { return clampPosition(position + 24); }
         if (position < 24) return position;
         return clampPosition(position - 24);
     }
 
+    // Moves the player's car with amount equvivalent to delta
     private void moveCar(Player currentPlayer, int delta) {
         for (int q = 0; q < delta; q++) {
             currentPlayer.setPosition(clampPosition(currentPlayer.getPosition() + 1));
@@ -84,11 +86,11 @@ public class GameController {
         }
     }
 
+    // Updates the car position based on currentPlayer's position.
     private void updateCar(Player currentPlayer) {
         view.getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
         view.getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
     }
-
 
     /**
      * This method is used for getting the players names.
