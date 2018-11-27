@@ -43,7 +43,11 @@ public class GameController {
                 language = "DA";
                 break;
         }
-
+        try {
+            stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
+        } catch (FileNotFoundException fnfException) {
+            System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
+        }
         addPlayers();
     }
 
