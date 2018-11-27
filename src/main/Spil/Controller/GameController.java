@@ -37,18 +37,10 @@ public class GameController {
             e.printStackTrace();
         }
 
-        int i = view.getUserInteger("Press 1 for english. Tryk 2 for dansk", 1, 2);
 
-        String language = "";
+        String language = view.getUserSelection("Choose language/Vælg sprog", "EN", "DA");
 
-        switch (i) {
-            case 1:
-                language = "EN";
-                break;
-            case 2:
-                language = "DA";
-                break;
-        }
+
         try {
             stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
         } catch (FileNotFoundException fnfException) {
@@ -66,40 +58,37 @@ public class GameController {
         this.players = getPlayers();
 
 
-        while(true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
+        while (true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
             for (int k = 0; k < players.length; k++) {
                 int value1[] = d.rollDice();
                 view.setDice(value1[0], value1[1]);
                 TestRunExampleGame.sleep();
-                view.getFields()[players[k].current_position].setCar(players[k],false);
+                view.getFields()[players[k].current_position].setCar(players[k], false);
 
                 players[k].previous_position = players[k].current_position;
 
-                if ((players[k].current_position+value1[0]+value1[1])<=23){
+                if ((players[k].current_position + value1[0] + value1[1]) <= 23) {
                     players[k].current_position += value1[0] + value1[1];
-                }
-                else {
-                    players[k].current_position = (players[k].current_position-24)+value1[0]+value1[1];
+                } else {
+                    players[k].current_position = (players[k].current_position - 24) + value1[0] + value1[1];
                 }
 
-                for (int q = 0; q < (value1[0]+value1[1]); q++) {
+                for (int q = 0; q < (value1[0] + value1[1]); q++) {
                     if (players[k].previous_position >= 23) {
-                        view.getFields()[players[k].previous_position].setCar(players[k],false);
+                        view.getFields()[players[k].previous_position].setCar(players[k], false);
                         players[k].previous_position = 0;
-                        view.getFields()[players[k].previous_position].setCar(players[k],true);
+                        view.getFields()[players[k].previous_position].setCar(players[k], true);
                         TestRunExampleGame.sleep(100);
-                    }
-                    else {
-                        view.getFields()[players[k].previous_position].setCar(players[k],false);
+                    } else {
+                        view.getFields()[players[k].previous_position].setCar(players[k], false);
                         players[k].previous_position += 1;
-                        view.getFields()[players[k].previous_position].setCar(players[k],true);
+                        view.getFields()[players[k].previous_position].setCar(players[k], true);
                         TestRunExampleGame.sleep(100);
                     }
                 }
 
             }
         }
-
 
 
     }
@@ -113,7 +102,7 @@ public class GameController {
     public Player[] getPlayers() {
         int n;
 
-        while ((n = view.getUserInteger(stringContainer.getString("amount_players"), 1, 4)) <= 0) {
+        while ((n = Integer.parseInt(view.getUserSelection(stringContainer.getString("amount_players"), "2", "3", "4"))) <= 0) {
             view.showMessage(stringContainer.getString("invalid_amount_players"));
         }
 
@@ -139,12 +128,9 @@ public class GameController {
             view.getFields()[0].setCar(player, true);
 
 
-
-
         }
         return players;
     }
-
 
 
 }
