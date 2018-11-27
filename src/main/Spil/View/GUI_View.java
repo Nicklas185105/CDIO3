@@ -1,8 +1,6 @@
 package main.Spil.View;
 
-import gui_fields.GUI_Player;
 import gui_main.GUI;
-import main.Spil.Controller.GameController;
 import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 
@@ -13,7 +11,7 @@ public class GUI_View {
 
     public GUI_View() throws FileNotFoundException {
 
-        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/%s_game_strings.txt", "DA")));
+        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/%s_game_strings.txt", "EN")));
 
         gui = new GUI(board.getGuiFields());
 
