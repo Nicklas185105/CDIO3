@@ -1,6 +1,7 @@
 package main.Spil.Controller;
 
 import gui_fields.GUI_Field;
+import gui_fields.GUI_Car;
 import gui_main.GUI;
 import gui_tests.Test;
 import gui_tests.TestRunExampleGame;
@@ -107,11 +108,11 @@ public class GameController {
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
 
-            String name = view.getUserString(stringContainer.getString("give_player_name") + (i + 1));
+            String name = view.getUserString(stringContainer.getString("give_player_name", (i + 1)));
 
-            FigureCard figureCard = new FigureCard(Enum.valueOf(FigureCard.cardType.class, view.getUserString(stringContainer.getString("select_card_type"))));
+            String type = view.getUserSelection(stringContainer.getString("select_card_type"), "Car", "Racecar", "Tractor", "UFO");
 
-            Player player = new Player(name, 24 - 2 * n, figureCard);
+            Player player = new Player(name, 24 - 2 * n, type);
             players[i] = player;
             view.addPlayer(player);
             view.getFields()[0].setCar(player, true);

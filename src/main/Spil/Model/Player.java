@@ -1,15 +1,12 @@
 package main.Spil.Model;
 
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 
 /**
  * This class is for creating the players.
  */
-public class Player extends GUI_Player{
-    /**
-     * Defines the name of the player.
-     */
-    private FigureCard figureCard;
+public class Player extends GUI_Player {
 
     /**
      * Defines the balance.
@@ -19,19 +16,23 @@ public class Player extends GUI_Player{
 
     /**
      * This method is setting a name for the player and creating balance for the player.
+     *
      * @param name Is used for defining the name of the player.
      */
-    public Player(String name, int balance, FigureCard figureCard){
-        this(name, balance);
-        this.figureCard = figureCard;
+    public Player(String name, int balance, String type) {
+
+        super(name, balance, new GUI_Car(null, null,  (GUI_Car.Type) Enum.valueOf(GUI_Car.Type.class, type.toString().toUpperCase()), GUI_Car.Pattern.FILL));
+
     }
 
     public Player(String name, int balance) {
         super(name, balance);
     }
 
+
     /**
      * This method is used for seeing the name of the player.
+     *
      * @return Returning the name of the player.
      */
     public String getName() {
@@ -56,7 +57,7 @@ public class Player extends GUI_Player{
         return balance;
     }
 
-    public GUI_Player getGUIPlayer(){
+    public GUI_Player getGUIPlayer() {
         return new GUI_Player(super.getName(), balance);
     }
 

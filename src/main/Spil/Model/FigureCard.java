@@ -8,9 +8,7 @@ public class FigureCard {
     }
 
     public enum cardType {
-        Cat,
-        Dog,
-        Boat,
+        Racecar,
         Car
     }
 

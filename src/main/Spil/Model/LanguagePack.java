@@ -46,6 +46,9 @@ public class LanguagePack {
         return gameStrings.get(key);
     }
 
+    public String getString(String key, Object... args) {
+        return String.format(gameStrings.get(key), args);
+    }
     /**
      *
      * @param path Is the path of where the file is located.
