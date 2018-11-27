@@ -11,7 +11,7 @@ public class GUI_View {
 
     public GUI_View() throws FileNotFoundException {
 
-        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/%s_game_strings.txt", "DA")));
+        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/%s_game_strings.txt", "EN")));
 
         gui = new GUI(board.getGuiFields());
 
