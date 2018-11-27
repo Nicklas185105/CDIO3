@@ -110,20 +110,9 @@ public class GameController {
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
 
-            String name = view.getUserString(stringContainer.getString("give_player_name") + (i + 1));
+            String name = view.getUserString(stringContainer.getString("give_player_name", (i + 1)));
 
-            FigureCard figureCard = null;
-            while (true) {
-
-                try {
-                    figureCard = new FigureCard(Enum.valueOf(FigureCard.cardType.class, view.getUserString(stringContainer.getString("select_card_type"))));
-                    break;
-                } catch (IllegalArgumentException e) {
-                    view.showMessage(stringContainer.getString("illegal_card_type"));
-                }
-            }
-
-            Player player = new Player(name, 24 - 2 * n, figureCard);
+            Player player = new Player(name, 24 - 2 * n);
             players[i] = player;
             view.addPlayer(player);
             view.getFields()[0].setCar(player, true);
