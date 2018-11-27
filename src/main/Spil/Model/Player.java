@@ -12,7 +12,7 @@ public class Player extends GUI_Player {
      * Defines the balance.
      */
     private int balance = 0;
-    private int position  = 0;
+    private int position = 0;
 
     /**
      * This method is setting a name for the player and creating balance for the player.
@@ -21,14 +21,8 @@ public class Player extends GUI_Player {
      */
     public Player(String name, int balance, String type) {
 
-        super(name, balance, new GUI_Car(null, null,  (GUI_Car.Type) Enum.valueOf(GUI_Car.Type.class, type.toString().toUpperCase()), GUI_Car.Pattern.FILL));
-
+        super(name, balance, new GUI_Car(null, null, (GUI_Car.Type) Enum.valueOf(GUI_Car.Type.class, type.toString().toUpperCase()), GUI_Car.Pattern.FILL));
     }
-
-    public Player(String name, int balance) {
-        super(name, balance);
-    }
-
 
     /**
      * This method is used for seeing the name of the player.
@@ -50,17 +44,15 @@ public class Player extends GUI_Player {
         balance += amount;
     }
 
-    /**
-     * @return Returns the balance
-     */
-    public int getBalance() {
-        return balance;
-    }
-
     public GUI_Player getGUIPlayer() {
         return new GUI_Player(super.getName(), balance);
     }
 
-    public int getPosition() { return position;}
-    public void setPosition(int position) { this.position = position; }
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }
