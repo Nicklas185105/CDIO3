@@ -12,11 +12,7 @@ public class FieldExtensions {
         return guiField instanceof GUI_Ownable;
     }
 
-    public GUI_Ownable toOwnable(Field field) {
-        return toOwnable(field.toGUI());
-    }
-
-    public GUI_Ownable toOwnable(GUI_Field guiField) {
+    public static GUI_Ownable toOwnable(GUI_Field guiField) {
         if (isOwnableField(guiField)) { return (GUI_Ownable)guiField; }
         throw new IllegalArgumentException("Field is not of type GUI_Ownable");
     }
