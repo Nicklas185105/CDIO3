@@ -34,16 +34,6 @@ public class Player extends GUI_Player {
     }
 
 
-    /**
-     * This method is changing the balance with a specific value.
-     *
-     * @param amount Is a specific value to change the balance with.
-     */
-    public void changeBalance(int amount) {
-        if (balance < 0) this.balance = 0;
-        balance += amount;
-    }
-
     public GUI_Player getGUIPlayer() {
         return new GUI_Player(super.getName(), balance);
     }
