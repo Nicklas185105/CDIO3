@@ -25,8 +25,6 @@ public class GameController {
      * Set user interface
      */
     GUI view;
-    Random random;
-    DiceCup d = new DiceCup();
     Player[] players;
     GameBoard board;
 
