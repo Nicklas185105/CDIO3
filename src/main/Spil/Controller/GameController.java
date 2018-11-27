@@ -1,5 +1,6 @@
 package main.Spil.Controller;
 
+import gui_fields.GUI_Car;
 import gui_main.GUI;
 import gui_tests.Test;
 import gui_tests.TestRunExampleGame;
@@ -48,12 +49,12 @@ public class GameController {
         }
 
         if (language != "EN") {
-        GameBoard board = new GameBoard(stringContainer);
-        for (int j = 0; j < view.getFields().length; j++) {
-            view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
-            view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
-            view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
-        }
+            GameBoard board = new GameBoard(stringContainer);
+            for (int j = 0; j < view.getFields().length; j++) {
+                view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
+                view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
+                view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
+            }
         }
 
         this.players = getPlayers();
@@ -112,7 +113,9 @@ public class GameController {
 
             String name = view.getUserString(stringContainer.getString("give_player_name", (i + 1)));
 
-            Player player = new Player(name, 24 - 2 * n);
+            String type = view.getUserSelection(stringContainer.getString("select_card_type"), "Car", "Racecar", "Tractor", "UFO");
+
+            Player player = new Player(name, 24 - 2 * n, type);
             players[i] = player;
             view.addPlayer(player);
             view.getFields()[0].setCar(player, true);

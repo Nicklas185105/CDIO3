@@ -1,11 +1,14 @@
 package main.Spil.Model;
 
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
+
+import java.awt.*;
 
 /**
  * This class is for creating the players.
  */
-public class Player extends GUI_Player{
+public class Player extends GUI_Player {
     /**
      * Defines the name of the player.
      */
@@ -22,19 +25,39 @@ public class Player extends GUI_Player{
 
     /**
      * This method is setting a name for the player and creating balance for the player.
+     *
      * @param name Is used for defining the name of the player.
      */
-    public Player(String name, int balance, FigureCard figureCard){
-        this(name, balance);
-        this.figureCard = figureCard;
+    public Player(String name, int balance, String type) {
+        /*super(name, balance,
+                type == "UFO" ?
+                        new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL) :
+                type == "Car" ?
+                        new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL) :
+                type == "Racecar" ?
+                        new GUI_Car(null, null, GUI_Car.Type.RACECAR, GUI_Car.Pattern.FILL):
+                        new GUI_Car(null, null, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL)
+        );*/
+        super(name, balance, new GUI_Car(null, null,  (GUI_Car.Type) Enum.valueOf(GUI_Car.Type.class, type.toString().toUpperCase()), GUI_Car.Pattern.FILL));
+
     }
 
-    public Player(String name, int balance) {
-        super(name, balance);
+    private GUI_Car getCar(String type){
+        if (type == "UFO") {
+            return new GUI_Car(null, null, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL);
+        } else if (type == "Racecar") {
+            return new GUI_Car(null, null, GUI_Car.Type.RACECAR, GUI_Car.Pattern.FILL);
+        } else if (type == "Car") {
+            return new GUI_Car(null, null, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+        } else {
+            return new GUI_Car(null, null, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL);
+        }
     }
+
 
     /**
      * This method is used for seeing the name of the player.
+     *
      * @return Returning the name of the player.
      */
     public String getName() {
@@ -59,20 +82,20 @@ public class Player extends GUI_Player{
         return balance;
     }
 
-    public GUI_Player getGUIPlayer(){
+    public GUI_Player getGUIPlayer() {
         return new GUI_Player(super.getName(), balance);
     }
 
-    public void setCurrent_position(int l,int o) {
-        current_position += l+o;
+    public void setCurrent_position(int l, int o) {
+        current_position += l + o;
     }
 
     public int getCurrent_position() {
         return current_position;
     }
 
-    public void setPrevious_position(int l,int o) {
-        previous_position += l+o;
+    public void setPrevious_position(int l, int o) {
+        previous_position += l + o;
     }
 
     public int getPrevious_position() {

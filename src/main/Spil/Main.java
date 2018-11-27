@@ -1,11 +1,6 @@
 package main.Spil;
 
-import gui_codebehind.GUI_Center;
-import gui_fields.GUI_Board;
-import gui_fields.GUI_Player;
-import main.Spil.Controller.DiceGame;
 import main.Spil.Controller.GameController;
-import main.Spil.View.GUI_View;
 
 import java.io.IOException;
 
@@ -13,7 +8,7 @@ import java.io.IOException;
  * Used for running the application.
  *
  * <p>
- *     Creates a new instance of the DiceGame-class. Starts the game by calling the startGame-method.
+ *     Creates a new instance of the class. Starts the game by calling the startGame-method.
  * </p>
  *
  * @author Hans, Nicklas, Rasmus, Mathias, Jeppe and Anton.
