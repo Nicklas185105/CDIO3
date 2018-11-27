@@ -1,15 +1,14 @@
 package main.Spil.Controller;
 
 import gui_fields.GUI_Field;
-import gui_fields.GUI_Car;
 import gui_main.GUI;
-import gui_tests.Test;
 import gui_tests.TestRunExampleGame;
 import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
 import java.io.FileNotFoundException;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 /**
@@ -29,6 +28,8 @@ public class GameController {
     Player[] players;
     GameBoard board;
 
+    ArrayList<FieldActionListener> actionEvents;
+
     public GameController() {
         try {
             view = new GUI_View().getGUI();
@@ -36,9 +37,7 @@ public class GameController {
             e.printStackTrace();
         }
 
-
         String language = view.getUserSelection("Choose language/Vælg sprog", "EN", "DA");
-
 
         try {
             stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
@@ -58,16 +57,29 @@ public class GameController {
         this.players = getPlayers();
         Dice die = new Dice(6);
 
+        actionEvents = new ArrayList<FieldActionListener>();
+        actionEvents.add(new DefaultFieldActionListener());
 
         while (true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
             for (int k = 0; k < players.length; k++) {
                 int dieValue = die.roll();
                 view.setDie(dieValue);
-                TestRunExampleGame.sleep();
                 Player currentPlayer = players[k];
+
+                invokeLandEvents(
+                    board.getFields()[currentPlayer.getPosition()],
+                    view.getFields()[currentPlayer.getPosition()],
+                    currentPlayer
+                );
 
                 moveCar(currentPlayer, dieValue);
             }
+        }
+    }
+
+    private void invokeLandEvents(Field field, GUI_Field guiField, Player player) {
+        for (int i = 0; i < actionEvents.size(); i++) {
+            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, view));
         }
     }
 
