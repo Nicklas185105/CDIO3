@@ -1,20 +1,23 @@
 package main.Spil.Model;
 
+import gui_fields.GUI_Player;
+
 /**
  * This class is for creating the players.
  */
-public class Player {
+public class Player extends GUI_Player{
     /**
      * Defines the name of the player.
      */
-    private String name;
-
     private FigureCard figureCard;
 
     /**
      * Defines the balance.
      */
     private int balance = 0;
+    int currentField = 0;
+    public int previous_position;
+    public int current_position = 0;
 
 
     /**
@@ -22,9 +25,12 @@ public class Player {
      * @param name Is used for defining the name of the player.
      */
     public Player(String name, int balance, FigureCard figureCard){
-        this.name = name;
-        this.balance = balance;
+        this(name, balance);
         this.figureCard = figureCard;
+    }
+
+    public Player(String name, int balance) {
+        super(name, balance);
     }
 
     /**
@@ -32,7 +38,7 @@ public class Player {
      * @return Returning the name of the player.
      */
     public String getName() {
-        return this.name;
+        return super.getName();
     }
 
 
@@ -53,5 +59,24 @@ public class Player {
         return balance;
     }
 
+    public GUI_Player getGUIPlayer(){
+        return new GUI_Player(super.getName(), balance);
+    }
+
+    public void setCurrent_position(int l,int o) {
+        current_position += l+o;
+    }
+
+    public int getCurrent_position() {
+        return current_position;
+    }
+
+    public void setPrevious_position(int l,int o) {
+        previous_position += l+o;
+    }
+
+    public int getPrevious_position() {
+        return previous_position;
+    }
 
 }

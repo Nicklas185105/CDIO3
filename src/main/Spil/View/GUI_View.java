@@ -1,22 +1,28 @@
 package main.Spil.View;
 
-import gui_fields.GUI_Board;
-import gui_fields.GUI_Field;
+import gui_fields.GUI_Player;
 import gui_main.GUI;
+import main.Spil.Controller.GameController;
 import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.FileNotFoundException;
 
 public class GUI_View {
-    public GUI_View() throws IOException {
-        String language = "DA";
-        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/DA_game_strings.txt", language)));
+    public GUI gui;
 
-        GUI g = new GUI(board.getGuiFields());
+    public GUI_View() throws FileNotFoundException {
+
+        GameBoard board = new GameBoard(new LanguagePack(String.format("resources/%s_game_strings.txt", "DA")));
+
+        gui = new GUI(board.getGuiFields());
+
 
     }
+
+    public GUI getGUI() {
+        return gui;
+    }
+
 
 }
