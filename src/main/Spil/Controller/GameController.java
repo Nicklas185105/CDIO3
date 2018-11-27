@@ -7,7 +7,6 @@ import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -58,7 +57,7 @@ public class GameController {
         Dice die = new Dice(6);
 
         actionEvents = new ArrayList<FieldActionListener>();
-        actionEvents.add(new DefaultFieldActionListener());
+        actionEvents.add(new PropertyFieldActionListener());
 
         while (true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
             for (int k = 0; k < players.length; k++) {
