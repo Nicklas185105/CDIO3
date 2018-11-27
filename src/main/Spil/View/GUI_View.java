@@ -7,6 +7,7 @@ import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GUI_View {
@@ -14,8 +15,7 @@ public class GUI_View {
         String language = "DA";
         GameBoard board = new GameBoard(new LanguagePack(String.format("resources/DA_game_strings.txt", language)));
 
-        new GUI_Board(board.getGuiFields());
-
+        GUI g = new GUI(board.getGuiFields());
 
     }
 
