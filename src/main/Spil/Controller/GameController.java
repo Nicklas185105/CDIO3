@@ -1,10 +1,13 @@
 package main.Spil.Controller;
 
 import gui_main.GUI;
+import gui_tests.Test;
+import gui_tests.TestRunExampleGame;
 import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
 import java.io.FileNotFoundException;
+import java.util.Random;
 
 
 /**
@@ -21,6 +24,9 @@ public class GameController {
      * Set user interface
      */
     GUI view;
+    Random random;
+    DiceCup d = new DiceCup();
+    Player[] players;
 
     public GameController() {
 
@@ -48,7 +54,45 @@ public class GameController {
         } catch (FileNotFoundException fnfException) {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }
-        addPlayers();
+        this.players = getPlayers();
+
+
+        while(true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
+            for (int k = 0; k < players.length; k++) {
+                int value1[] = d.rollDice();
+                view.setDice(value1[0], value1[1]);
+                TestRunExampleGame.sleep();
+                view.getFields()[players[k].current_position].setCar(players[k],false);
+
+                players[k].previous_position = players[k].current_position;
+
+                if ((players[k].current_position+value1[0]+value1[1])<=23){
+                    players[k].current_position += value1[0] + value1[1];
+                }
+                else {
+                    players[k].current_position = (players[k].current_position-24)+value1[0]+value1[1];
+                }
+
+                for (int q = 0; q < (value1[0]+value1[1]); q++) {
+                    if (players[k].previous_position >= 23) {
+                        view.getFields()[players[k].previous_position].setCar(players[k],false);
+                        players[k].previous_position = 0;
+                        view.getFields()[players[k].previous_position].setCar(players[k],true);
+                        TestRunExampleGame.sleep(100);
+                    }
+                    else {
+                        view.getFields()[players[k].previous_position].setCar(players[k],false);
+                        players[k].previous_position += 1;
+                        view.getFields()[players[k].previous_position].setCar(players[k],true);
+                        TestRunExampleGame.sleep(100);
+                    }
+                }
+
+            }
+        }
+
+
+
     }
 
 
@@ -57,7 +101,7 @@ public class GameController {
      *
      * @return Returning the players names.
      */
-    public void addPlayers() {
+    public Player[] getPlayers() {
         int n;
 
         while ((n = view.getUserInteger(stringContainer.getString("amount_players"), 1, 4)) <= 0) {
@@ -83,6 +127,15 @@ public class GameController {
             Player player = new Player(name, 24 - 2 * n, figureCard);
             players[i] = player;
             view.addPlayer(player);
+            view.getFields()[0].setCar(player, true);
+
+
+
+
         }
+        return players;
     }
+
+
+
 }

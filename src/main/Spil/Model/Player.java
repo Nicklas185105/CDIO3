@@ -15,6 +15,9 @@ public class Player extends GUI_Player{
      * Defines the balance.
      */
     private int balance = 0;
+    int currentField = 0;
+    public int previous_position;
+    public int current_position = 0;
 
 
     /**
@@ -60,5 +63,20 @@ public class Player extends GUI_Player{
         return new GUI_Player(super.getName(), balance);
     }
 
+    public void setCurrent_position(int l,int o) {
+        current_position += l+o;
+    }
+
+    public int getCurrent_position() {
+        return current_position;
+    }
+
+    public void setPrevious_position(int l,int o) {
+        previous_position += l+o;
+    }
+
+    public int getPrevious_position() {
+        return previous_position;
+    }
 
 }
