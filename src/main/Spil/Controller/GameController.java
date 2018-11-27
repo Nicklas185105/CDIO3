@@ -55,12 +55,13 @@ public class GameController {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }
 
-
+        if (language != "EN") {
         GameBoard board = new GameBoard(stringContainer);
         for (int j = 0; j < view.getFields().length; j++) {
             view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
             view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
             view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
+        }
         }
 
         this.players = getPlayers();
