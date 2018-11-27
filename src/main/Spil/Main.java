@@ -3,6 +3,7 @@ package main.Spil;
 import gui_codebehind.GUI_Center;
 import gui_fields.GUI_Board;
 import main.Spil.Controller.DiceGame;
+import main.Spil.Controller.GameController;
 import main.Spil.View.GUI_View;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Main {
      * @throws IOException Is used for...
      */
     public static void main(String[] args) throws IOException  {
-        new GUI_View();
+        new GameController();
     }
 }
 

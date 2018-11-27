@@ -28,6 +28,9 @@ Illegal card type, try again
 field_start
 Welcome to start
 
+field_start_titel
+Start
+
 field_burger_baren
 You're now in the burger café
 
