@@ -66,6 +66,7 @@ public class GameController {
 
         this.players = getPlayers();
 
+
         while(true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
             for (int k = 0; k < players.length; k++) {
                 int value1[] = d.rollDice();
