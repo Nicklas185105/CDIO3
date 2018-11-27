@@ -1,8 +1,6 @@
 package main.Spil.View;
 
-import gui_fields.GUI_Player;
 import gui_main.GUI;
-import main.Spil.Controller.GameController;
 import main.Spil.Model.GameBoard;
 import main.Spil.Model.LanguagePack;
 

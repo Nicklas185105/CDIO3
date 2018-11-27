@@ -49,11 +49,15 @@ public class GameController {
                 language = "DA";
                 break;
         }
+
+
+
         try {
             stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
         } catch (FileNotFoundException fnfException) {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }
+
         this.players = getPlayers();
 
 
@@ -104,7 +108,7 @@ public class GameController {
     public Player[] getPlayers() {
         int n;
 
-        while ((n = view.getUserInteger(stringContainer.getString("amount_players"), 1, 4)) <= 0) {
+        while ((n = Integer.parseInt(view.getUserSelection(stringContainer.getString("amount_players"), "2","3","4"))) <= 0) {
             view.showMessage(stringContainer.getString("invalid_amount_players"));
         }
 
