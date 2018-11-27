@@ -1,5 +1,6 @@
 package main.Spil.Controller;
 
+import gui_fields.GUI_Field;
 import gui_main.GUI;
 import gui_tests.Test;
 import gui_tests.TestRunExampleGame;
@@ -24,13 +25,10 @@ public class GameController {
      * Set user interface
      */
     GUI view;
-    Random random;
-    DiceCup d = new DiceCup();
     Player[] players;
+    GameBoard board;
 
     public GameController() {
-
-
         try {
             view = new GUI_View().getGUI();
         } catch (FileNotFoundException e) {
@@ -47,51 +45,48 @@ public class GameController {
             System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
         }
 
+        board = new GameBoard(stringContainer);
         if (language != "EN") {
-        GameBoard board = new GameBoard(stringContainer);
-        for (int j = 0; j < view.getFields().length; j++) {
-            view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
-            view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
-            view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
-        }
+            for (int j = 0; j < view.getFields().length; j++) {
+                view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
+                view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
+                view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
+            }
         }
 
         this.players = getPlayers();
+        Dice die = new Dice(6);
 
 
         while (true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
             for (int k = 0; k < players.length; k++) {
-                int value1[] = d.rollDice();
-                view.setDice(value1[0], value1[1]);
+                int dieValue = die.roll();
+                view.setDie(dieValue);
                 TestRunExampleGame.sleep();
-                view.getFields()[players[k].current_position].setCar(players[k], false);
+                Player currentPlayer = players[k];
 
-                players[k].previous_position = players[k].current_position;
-
-                if ((players[k].current_position + value1[0] + value1[1]) <= 23) {
-                    players[k].current_position += value1[0] + value1[1];
-                } else {
-                    players[k].current_position = (players[k].current_position - 24) + value1[0] + value1[1];
-                }
-
-                for (int q = 0; q < (value1[0] + value1[1]); q++) {
-                    if (players[k].previous_position >= 23) {
-                        view.getFields()[players[k].previous_position].setCar(players[k], false);
-                        players[k].previous_position = 0;
-                        view.getFields()[players[k].previous_position].setCar(players[k], true);
-                        TestRunExampleGame.sleep(100);
-                    } else {
-                        view.getFields()[players[k].previous_position].setCar(players[k], false);
-                        players[k].previous_position += 1;
-                        view.getFields()[players[k].previous_position].setCar(players[k], true);
-                        TestRunExampleGame.sleep(100);
-                    }
-                }
-
+                moveCar(currentPlayer, dieValue);
             }
         }
+    }
 
+    private int clampPosition(int position) {
+        if (position < 0) { return clampPosition(position + 24); }
+        if (position < 24) return position;
+        return clampPosition(position - 24);
+    }
 
+    private void moveCar(Player currentPlayer, int delta) {
+        for (int q = 0; q < delta; q++) {
+            currentPlayer.setPosition(clampPosition(currentPlayer.getPosition() + 1));
+            updateCar(currentPlayer);
+            TestRunExampleGame.sleep(100);
+        }
+    }
+
+    private void updateCar(Player currentPlayer) {
+        view.getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
+        view.getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
     }
 
 
@@ -112,16 +107,7 @@ public class GameController {
 
             String name = view.getUserString(stringContainer.getString("give_player_name") + (i + 1));
 
-            FigureCard figureCard = null;
-            while (true) {
-
-                try {
-                    figureCard = new FigureCard(Enum.valueOf(FigureCard.cardType.class, view.getUserString(stringContainer.getString("select_card_type"))));
-                    break;
-                } catch (IllegalArgumentException e) {
-                    view.showMessage(stringContainer.getString("illegal_card_type"));
-                }
-            }
+            FigureCard figureCard = new FigureCard(Enum.valueOf(FigureCard.cardType.class, view.getUserString(stringContainer.getString("select_card_type"))));
 
             Player player = new Player(name, 24 - 2 * n, figureCard);
             players[i] = player;
