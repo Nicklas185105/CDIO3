@@ -33,7 +33,7 @@ public class GameBoard {
                 new Field("C", 1, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),
                 new Field(stringContainer.getString("field_skate_park_titel"), 2, stringContainer.getString("field_skate_parken"), Field.GUI_Type.Street_Orange),
                 new Field(stringContainer.getString("field_pool_titel"), 2, stringContainer.getString("field_swimming_poolen"), Field.GUI_Type.Street_Orange),
-                new Field(stringContainer.getString("field_parking_titel"), 0, stringContainer.getString("field_parkering"), Field.GUI_Type.Brewery),
+                new Field(stringContainer.getString("field_parking_titel"), 0, stringContainer.getString("field_parkering"), Field.GUI_Type.Refuge),
                 new Field(stringContainer.getString("field_game_hall_titel"), 3, stringContainer.getString("field_spille_hallen"), Field.GUI_Type.Street_Red),
                 new Field(stringContainer.getString("field_cinema_titel"), 3, stringContainer.getString("field_kinoen"), Field.GUI_Type.Street_Red),
                 new Field("C", 0, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),
