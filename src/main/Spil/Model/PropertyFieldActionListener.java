@@ -4,9 +4,9 @@ import gui_fields.GUI_Ownable;
 
 public class PropertyFieldActionListener implements FieldActionListener {
     public void onFieldLandedOn(FieldAction action) {
-        if (FieldExtensions.isOwnableField(action.field)) {
+        if (Field.isOwnableField(action.field)) {
             // Retrieve field
-            GUI_Ownable ownableField = FieldExtensions.toOwnable(action.guiField);
+            GUI_Ownable ownableField = Field.toOwnable(action.guiField);
 
             // Check if the field is for sale?
             if (ownableField.getOwnerName() == null) {
