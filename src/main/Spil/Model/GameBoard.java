@@ -21,8 +21,8 @@ public class GameBoard {
 
     public Field[] getFields() {
          return new Field[]{
-                new Field("Start", 1, "Start",Field.GUI_Type.Tax),
-                new Field("Burgerbaren", 1, stringContainer.getString("field_burger_baren"), Field.GUI_Type.Street_Brown),
+                new Field(stringContainer.getString("field_start_titel"), 1, "Start",Field.GUI_Type.Tax),
+                new Field(stringContainer.getString("field_burgerbar_titel"), 1, stringContainer.getString("field_burger_baren"), Field.GUI_Type.Street_Brown),
                 new Field("Pizzariaet", 1, stringContainer.getString("field_pizzariaet"), Field.GUI_Type.Street_Brown),
                 new Field("C", 0, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),
                 new Field("Slikbutikken", 1, stringContainer.getString("field_slik_butikken"), Field.GUI_Type.Street_Cyan),
