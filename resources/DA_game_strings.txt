@@ -92,25 +92,58 @@ field_start_titel
 Start
 
 field_burgerbar_titel
-Burgerbar
+Burgerbaren
 
 field_pizzaria_titel
-Pizzaria
+Pizzariaet
 
 field_candy_store_titel
-Candy Store
+Slikbuttikken
 
 field_ice_cream_titel
-Ice cream shop
+Isbutikken
 
 field_museum_titel
-Museum
+Museet
 
 field_library_titel
-Library
+Biblioteket
 
 field_skate_park_titel
-Skatepark
+Skaterparken
 
 field_pool_titel
 Swimmingpool
+
+field_game_hall_titel
+Spillehallen
+
+field_cinema_titel
+Biografen
+
+field_toy_store_titel
+Legetøjsbutikken
+
+field_pet_store_titel
+Dyrehandlen
+
+field_bowling_hall_titel
+Bowlinghallen
+
+field_zoo_titel
+Zoo
+
+field_water_park_titel
+Vandlandet
+
+field_beach_promenade
+Strand promenade
+
+field_prison_titel
+fængsel
+
+field_parking_titel
+Parkering
+
+field_go_to_prison_titel
+Gå til fængsel

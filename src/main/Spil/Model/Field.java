@@ -55,7 +55,7 @@ public class Field {
 
 
     public GUI_Field toGUI() {
-        String priceTxt = String.format("%d kr", value);
+        String priceTxt = String.format(" %s ", value);
 
         switch (fieldType) {
             case Street_Brown: return new GUI_Street(name, priceTxt, fieldText, "Leje: 1", new Color(134, 69, 18), Color.BLACK);
