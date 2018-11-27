@@ -70,7 +70,7 @@ public class Field {
             case Jail: return new GUI_Jail("default", name, "", fieldText, new Color(68, 68, 68), Color.BLACK);
             case Chance: return new GUI_Chance(name, "", fieldText, new Color(204, 182, 0), Color.BLACK);
             case Shipping: return new GUI_Shipping("default", name, "", fieldText, "Leje:  75", Color.WHITE, Color.BLACK);
-            case Tax: return new GUI_Tax(name, "+2 til dig", fieldText, Color.GRAY, Color.BLACK);
+            case Start: return new GUI_Tax(name, "+2 til dig", fieldText, Color.GRAY, Color.BLACK);
             case Empty: return new GUI_Empty();
         }
 
@@ -92,7 +92,7 @@ public class Field {
         Street_Yellow,
         Street_Green,
         Street_Blue,
-        Tax,
+        Start,
         Empty
     }
 }
