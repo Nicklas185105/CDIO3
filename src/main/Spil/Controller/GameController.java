@@ -65,11 +65,7 @@ public class GameController {
                 int dieValue = die.roll();
                 view.setDie(dieValue);
                 TestRunExampleGame.sleep();
-
                 Player currentPlayer = players[k];
-
-                Field currentField = board.getFields()[currentPlayer.getPosition()];
-                GUI_Field currentGUIField = view.getFields()[currentPlayer.getPosition()];
 
                 moveCar(currentPlayer, dieValue);
             }
