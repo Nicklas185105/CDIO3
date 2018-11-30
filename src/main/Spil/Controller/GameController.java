@@ -46,6 +46,8 @@ public class GameController {
         state.setStateMananger(new GameStateMananger());
         actionEvents = new ArrayList<FieldActionListener>();
         actionEvents.add(new PropertyFieldActionListener());
+        actionEvents.add(new JailFieldActionListener());
+
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
 
         Dice die = new Dice(6);
