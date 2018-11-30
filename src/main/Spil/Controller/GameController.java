@@ -50,6 +50,8 @@ public class GameController {
         actionEvents = new ArrayList<FieldActionListener>();
         actionEvents.add(new PropertyFieldActionListener());
         actionEvents.add(new JailFieldActionListener());
+        actionEvents.add(new StartFieldActionListener());
+        actionEvents.add(new ChanceFieldActionListener());
 
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
 
@@ -70,7 +72,8 @@ public class GameController {
                 invokeLandEvents(
                     state.getBoard().getFields()[currentPlayer.getPosition()],
                     state.getView().getFields()[currentPlayer.getPosition()],
-                    currentPlayer
+                    currentPlayer,
+                        dieValue
                 );
 
                 state.getStateMananger().determineState(state);
@@ -80,9 +83,9 @@ public class GameController {
     }
 
     // Kalder alle FieldActionListeners
-    private void invokeLandEvents(Field field, GUI_Field guiField, Player player) {
+    private void invokeLandEvents(Field field, GUI_Field guiField, Player player, int faceValue) {
         for (int i = 0; i < actionEvents.size(); i++) {
-            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, state));
+            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, state, faceValue));
         }
     }
 
@@ -98,7 +101,7 @@ public class GameController {
         for (int q = 0; q < delta; q++) {
             currentPlayer.setPosition(clampPosition(currentPlayer.getPosition() + 1));
             updateCar(currentPlayer);
-            TestRunExampleGame.sleep(100);
+            sleep(100);
         }
     }
 

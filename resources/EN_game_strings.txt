@@ -150,3 +150,9 @@ Parking
 
 field_go_to_prison_titel
 Go to prison
+
+die_roll
+It is %s's turn to roll the die
+
+die_roll_two
+Roll

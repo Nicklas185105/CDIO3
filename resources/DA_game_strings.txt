@@ -155,7 +155,7 @@ pay_rent
 "%s er landet på et felt som er ejet af %s. Du skulle betale %s til ham!"
 
 die_roll
-Det er %s tur til at rulle terningen
+Det er %s's tur til at rulle terningen
 
 die_roll_two
 Rul
