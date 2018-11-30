@@ -8,14 +8,12 @@ public class FieldAction {
     public final Field field;
     public final GUI_Field guiField;
     public final Player player;
-    public final GUI gui;
-    public final Player[] players;
+    public GameState gameState;
 
-    public  FieldAction(Field field, GUI_Field guiField, Player player, Player[] players, GUI gui) {
+    public  FieldAction(Field field, GUI_Field guiField, Player player, GameState gameState) {
         this.field = field;
         this.guiField = guiField;
         this.player = player;
-        this.gui = gui;
-        this.players = players;
+        this.gameState = gameState;
     }
 }
