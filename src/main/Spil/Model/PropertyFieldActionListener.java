@@ -36,7 +36,8 @@ public class PropertyFieldActionListener implements FieldActionListener {
                     Player owner = findPlayer(action.players, ownableField.getOwnerName());
                     owner.setBalance(owner.getBalance() + rent);
                 } else {
-                    //tabt
+
+
                 }
             }
         }

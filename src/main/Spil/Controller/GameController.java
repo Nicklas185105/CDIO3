@@ -23,49 +23,48 @@ public class GameController {
     /**
      * Set user interface
      */
-    GUI view;
-    Player[] players;
-    GameBoard board;
+    GameState state;
 
     ArrayList<FieldActionListener> actionEvents;
 
     public GameController() {
-        try {
-            view = new GUI_View().getGUI();
+        state = new GameState();
 
-            String language = view.getUserSelection("Choose language/Vælg sprog", "English", "Danish");
+        try {
+            state.setView(new GUI_View().getGUI());
+
+            String language = state.getView().getUserSelection("Choose language/Vælg sprog", "English", "Danish");
             LanguagePackWrapper languagePackWrapper = new LanguagePackWrapper(Enum.valueOf(LanguagePackWrapper.LanguageType.class, language));
-            board = languagePackWrapper.getBoard();
+            state.setBoard(languagePackWrapper.getBoard());
             stringContainer = languagePackWrapper.getLanguagePack();
 
-            if (!language.equals("English")) { languagePackWrapper.updateGUI(view); }
+            if (!language.equals("English")) { languagePackWrapper.updateGUI(state.getView()); }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        state.setStateMananger(new GameStateMananger());
         actionEvents = new ArrayList<FieldActionListener>();
         actionEvents.add(new PropertyFieldActionListener());
 
-        this.players = getPlayers();
+        state.setPlayers(getPlayers());
         Dice die = new Dice(6);
 
         while (true) {
-            for (int k = 0; k < players.length; k++) {
+            for (int k = 0; k < state.getPlayers().length; k++) {
                 TestRunExampleGame.sleep(500);
 
                 int dieValue = die.roll();
-                view.setDie(dieValue);
-                Player currentPlayer = players[k];
-
+                state.getView().setDie(dieValue);
+                Player currentPlayer = state.getPlayers()[k];
 
                 moveCar(currentPlayer, dieValue);
 
                 invokeLandEvents(
-                    board.getFields()[currentPlayer.getPosition()],
-                    view.getFields()[currentPlayer.getPosition()],
+                    state.getBoard().getFields()[currentPlayer.getPosition()],
+                    state.getView().getFields()[currentPlayer.getPosition()],
                     currentPlayer
                 );
-
             }
         }
     }
@@ -73,7 +72,7 @@ public class GameController {
     // Kalder alle FieldActionListeners
     private void invokeLandEvents(Field field, GUI_Field guiField, Player player) {
         for (int i = 0; i < actionEvents.size(); i++) {
-            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, players, view));
+            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, state));
         }
     }
 
