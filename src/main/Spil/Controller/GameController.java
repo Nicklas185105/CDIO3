@@ -40,7 +40,6 @@ public class GameController {
 
             if (!language.equals("English")) { languagePackWrapper.updateGUI(state.getView()); }
 
-            System.out.println(state.getBoard().toString());
 
 
         } catch (IOException e) {
