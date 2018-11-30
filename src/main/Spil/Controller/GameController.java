@@ -8,6 +8,7 @@ import main.Spil.View.GUI_View;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -79,6 +80,9 @@ public class GameController {
                 state.getStateMananger().determineState(state);
             }
         }
+
+        Arrays.sort(state.getPlayers());
+        state.getView().showMessage(state.getPlayers()[0].getName());
     }
 
     // Kalder alle FieldActionListeners
