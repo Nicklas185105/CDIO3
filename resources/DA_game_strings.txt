@@ -147,3 +147,15 @@ Parkering
 
 field_go_to_prison_titel
 Gå til fængsel
+
+buy_property
+Denne bolig er til salg! Vil %s købe denne bolig?
+
+pay_rent
+"%s er landet på et felt som er ejet af %s. Du skulle betale %s til ham!"
+
+die_roll
+Det er %s tur til at rulle terningen
+
+die_roll_two
+Rul

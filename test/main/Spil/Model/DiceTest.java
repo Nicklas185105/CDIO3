@@ -7,15 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
-    Dice dice;
-
-    @Before
-    void setup() {
-        dice = new Dice(6);
-    }
 
     @Test
     void roll() {
+
+        Dice dice = new Dice(6);
+
         int lastThrow = -1;
 
         int sameRollInRow = 0;
