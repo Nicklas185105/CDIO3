@@ -156,3 +156,9 @@ It is %s's turn to roll the die
 
 die_roll_two
 Roll
+
+chance_move
+You have moved %d fields!
+
+chance_point
+You get %d points!

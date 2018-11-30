@@ -159,3 +159,9 @@ Det er %s's tur til at rulle terningen
 
 die_roll_two
 Rul
+
+chance_move
+Du er flyttet %d felter!
+
+chance_point
+Du får %d point!
