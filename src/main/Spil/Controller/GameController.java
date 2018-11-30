@@ -27,21 +27,18 @@ public class GameController {
 
     ArrayList<FieldActionListener> actionEvents;
 
-    public GameController() {
+    public GameController(GUI_View guiView) {
         state = new GameState();
 
         try {
-            state.setView(new GUI_View().getGUI());
+            state.setView(guiView.getGUI());
 
             String language = state.getView().getUserSelection("Choose language/Vælg sprog", "English", "Danish");
             LanguagePackWrapper languagePackWrapper = new LanguagePackWrapper(Enum.valueOf(LanguagePackWrapper.LanguageType.class, language));
             state.setBoard(languagePackWrapper.getBoard());
             stringContainer = languagePackWrapper.getLanguagePack();
 
-            if (!language.equals("English")) { languagePackWrapper.updateGUI(state.getView()); }
-
-
-
+            languagePackWrapper.updateGUI(state.getView());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +51,9 @@ public class GameController {
         actionEvents.add(new ChanceFieldActionListener());
 
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
+    }
 
+    public void startGame() {
         Dice die = new Dice(6);
 
         while (state.getStateMananger().getState() == GameStateMananger.GameStateType.Running) {
@@ -79,7 +78,6 @@ public class GameController {
                 state.getStateMananger().determineState(state);
             }
         }
-
     }
 
     // Kalder alle FieldActionListeners

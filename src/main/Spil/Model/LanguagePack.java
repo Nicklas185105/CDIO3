@@ -37,16 +37,21 @@ public class LanguagePack {
         parseFile(filePath);
     }
 
+    // Create empty LanguagePack where everything returned is empty
+    public LanguagePack() {}
+
     /**
      *
      * @param key Is used for...
      * @return Returning ...
      */
     public String getString(String key) {
+        if (gameStrings == null) return "";
         return gameStrings.get(key);
     }
 
     public String getString(String key, Object... args) {
+        if (gameStrings == null) return "";
         return String.format(gameStrings.get(key), args);
     }
     /**
