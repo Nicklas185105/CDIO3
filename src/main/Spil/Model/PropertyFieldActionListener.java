@@ -17,7 +17,7 @@ public class PropertyFieldActionListener implements FieldActionListener {
             // Check if the field is for sale?
             if (ownableField.getOwnerName() == null && action.player.getBalance() >= rent) {
                 // Prompt dialog to buy property?
-                if (action.gui.getUserSelection(String.format("Denne bolig er til salg! Vil %s købe denne bolig?", action.player.getName()), "yes", "no").equals("yes")) {
+                if (action.gameState.getView().getUserSelection(String.format("Denne bolig er til salg! Vil %s købe denne bolig?", action.player.getName()), "yes", "no").equals("yes")) {
                     ownableField.setOwnerName(action.player.getName());
                     action.player.setBalance(action.player.getBalance() - rent);
                 }
@@ -25,7 +25,7 @@ public class PropertyFieldActionListener implements FieldActionListener {
 
             // Require rent from other players
             else if (!ownableField.getOwnerName().equals(action.player.getName())) {
-                action.gui.showMessage(String.format("%s er landet på et felt som er ejet af %s. Du skulle betale %s til ham!",
+                action.gameState.getView().showMessage(String.format("%s er landet på et felt som er ejet af %s. Du skulle betale %s til ham!",
                         action.player.getName(),
                         ownableField.getOwnerName(),
                         ownableField.getRent()));
@@ -33,10 +33,10 @@ public class PropertyFieldActionListener implements FieldActionListener {
                 // Remove money from player pocket
                 if (action.player.getBalance() > rent) {
                     action.player.setBalance(action.player.getBalance() - rent);
-                    Player owner = findPlayer(action.players, ownableField.getOwnerName());
+                    Player owner = findPlayer(action.gameState.getPlayers(), ownableField.getOwnerName());
                     owner.setBalance(owner.getBalance() + rent);
                 } else {
-                    //tabt
+                    action.gameState.getStateMananger().setPlayerLost(action.player);
                 }
             }
         }

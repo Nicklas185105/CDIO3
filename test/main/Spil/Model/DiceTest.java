@@ -1,20 +1,21 @@
-package test;
+package main.Spil.Model;
 
-import main.Spil.Model.Dice;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
-    Dice diceTest;
+    Dice dice;
 
-
+    @Before
+    void setup() {
+        dice = new Dice(6);
+    }
 
     @Test
-    public void roll() {
-        diceTest = new Dice(6);
-
+    void roll() {
         int lastThrow = -1;
 
         int sameRollInRow = 0;
@@ -23,27 +24,28 @@ class DiceTest {
 
         for (int i = 0; i < 60000; i++) {
             int diceValue;
-            diceValue = diceTest.roll();
+            diceValue = dice.roll();
 
             if (lastThrow == diceValue) {
                 sameRollInRow++;
             } else {
-                sameRollInRow = 0;
-
-                assert diceValue <= 6 && diceValue > 0;
-                assert sameRollInRow < 50;
+                Assert.assertTrue(diceValue <= 6 && diceValue > 0);
+                Assert.assertTrue(sameRollInRow < 50);
 
                 rollOff[diceValue - 1]++;
                 lastThrow = diceValue;
-
-
+                sameRollInRow = 0;
             }
 
         }
         for(int i = 0; i < rollOff.length; i++) {
-            assert rollOff[i] < 10000 + 400;
-            assert rollOff[i] < 10000 - 400;
-
+            Assert.assertTrue(rollOff[i] < 10000 + 400);
+            Assert.assertTrue(rollOff[i] < 10000 - 400);
         }
+    }
+
+    @Test
+    void getValue() {
+
     }
 }
