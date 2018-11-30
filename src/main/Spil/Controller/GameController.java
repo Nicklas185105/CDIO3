@@ -50,7 +50,7 @@ public class GameController {
         state.setPlayers(getPlayers());
         Dice die = new Dice(6);
 
-        while (true) {
+        while (state.getStateMananger().getState() == GameStateMananger.GameState.Running) {
             for (int k = 0; k < state.getPlayers().length; k++) {
                 TestRunExampleGame.sleep(500);
 
@@ -96,26 +96,5 @@ public class GameController {
     private void updateCar(Player currentPlayer) {
         state.getView().getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
         state.getView().getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
-    }
-
-    public Player[] getPlayers() {
-        int n;
-
-        while ((n = Integer.parseInt(state.getView().getUserSelection(stringContainer.getString("amount_players"), "2", "3", "4"))) <= 0) {
-            state.getView().showMessage(stringContainer.getString("invalid_amount_players"));
-        }
-
-        Player[] players = new Player[n];
-        for (int i = 0; i < n; i++) {
-
-            String name = state.getView().getUserString(stringContainer.getString("give_player_name", (i + 1)));
-            String type = state.getView().getUserSelection(stringContainer.getString("select_card_type"), "Car", "Racecar", "Tractor", "UFO");
-
-            Player player = new Player(name, 24 - 2 * n, type);
-            players[i] = player;
-            state.getView().addPlayer(player);
-            state.getView().getFields()[0].setCar(player, true);
-        }
-        return players;
     }
 }
