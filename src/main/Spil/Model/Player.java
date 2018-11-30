@@ -6,7 +6,7 @@ import gui_fields.GUI_Player;
 /**
  * This class is for creating the players.
  */
-public class Player extends GUI_Player {
+public class Player extends GUI_Player implements Comparable<Player> {
 
     /**
      * Defines the balance.
@@ -33,6 +33,13 @@ public class Player extends GUI_Player {
         return super.getName();
     }
 
+    public int compareTo(Player o) {
+        if(this.getBalance() > o.getBalance())
+            return -1;
+        else if (this.getBalance() == o.getBalance())
+            return 0 ;
+        return 1;
+    }
 
     public int getPosition() {
         return position;
