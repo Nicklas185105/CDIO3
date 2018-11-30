@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FieldTest {
+    /**
+     * Unit-test of toGUI, create a field and test that when we convert the field with the method toGUI, that the GUI
+     * Field we create have the right name, value, fieldtext and field type.æ
+     */
 
 
     @Test

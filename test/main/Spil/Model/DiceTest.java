@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
+    /**
+     * Unit-test of Roll method. creates a die and do 60000 rolls, it checks if the dice value is between 1-6 and makes
+     * sure the die dosn't rolls the same value 50 times in a row.
+     */
 
     @Test
     void roll() {
