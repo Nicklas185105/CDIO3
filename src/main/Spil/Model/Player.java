@@ -34,7 +34,6 @@ public class Player extends GUI_Player {
     }
 
 
-
     public int getPosition() {
         return position;
     }

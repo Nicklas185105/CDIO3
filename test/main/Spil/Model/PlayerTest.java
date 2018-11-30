@@ -20,13 +20,20 @@ class PlayerTest {
     }
 
     @Test
-    void getGUIPlayer() {
-
-
-    }
-
-    @Test
     void getPosition() {
+        int position = 0;
+        String name = "Skedeklaskeren";
+        int balance = 0;
+        String type = "Car";
+
+        Player player = new Player(name, balance, type);
+
+        player.setPosition(position);
+
+
+        Assert.assertEquals(player.getPosition(), position);
+
+
     }
 
     @Test
