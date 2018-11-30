@@ -1,6 +1,7 @@
 package main.Spil;
 
 import main.Spil.Controller.GameController;
+import main.Spil.View.GUI_View;
 
 import java.io.IOException;
 
@@ -21,9 +22,11 @@ public class Main {
      * @param args Something you need in order to run the application.
      * @throws IOException Is used for...
      */
-    public static void main(String[] args) throws IOException  {
+    public static void main(String[] args) {
         try {
-            new GameController();
+            GUI_View view = new GUI_View();
+            GameController controller = new GameController(view);
+            controller.startGame();
         } catch (Exception e) {
             e.printStackTrace();
         }
