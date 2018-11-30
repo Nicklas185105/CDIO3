@@ -10,7 +10,7 @@ class PlayerTest {
 
     @Test
     void getName() {
-        String name = "Skedeklaskeren";
+        String name = "Jens";
         int balance = 0;
         String type = "Car";
 
@@ -19,11 +19,14 @@ class PlayerTest {
         Assert.assertEquals(player.getName(), name);
 
     }
-// Tester både getPosition og setPosition
+
+    /**
+     *
+     */
     @Test
     void testPosition() {
         int position = 0;
-        String name = "Skedeklaskeren";
+        String name = "Jens";
         int balance = 0;
         String type = "Car";
 

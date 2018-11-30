@@ -3,7 +3,7 @@ package main.Spil.Model;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Jail;
 
-public class JailFieldActionListener implements FieldActionListener {
+public class wJailFieldActionListener implements FieldActionListener {
     public void onFieldLandedOn(FieldAction action) {
         if (isJailCard(action.guiField) && isGoToJailCard(action.field)) {
             // Find jail field.
