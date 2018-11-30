@@ -39,6 +39,9 @@ public class GameController {
             stringContainer = languagePackWrapper.getLanguagePack();
 
             if (!language.equals("English")) { languagePackWrapper.updateGUI(state.getView()); }
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,6 +76,7 @@ public class GameController {
                 state.getStateMananger().determineState(state);
             }
         }
+
     }
 
     // Kalder alle FieldActionListeners

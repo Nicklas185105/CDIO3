@@ -8,5 +8,12 @@ public class ChanceCard extends Field {
 
     }
 
+//    public Field getRandomField(){
+//
+//        return new Field();
+//
+//
+//    }
+
 
 }

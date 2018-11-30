@@ -13,15 +13,15 @@ public class GameBoard {
     public GUI_Field[] getGuiFields() {
         Field[] fields = getFields();
         GUI_Field[] gui_fields = new GUI_Field[fields.length];
-        for (int i = 0; i < fields.length; i++){
+        for (int i = 0; i < fields.length; i++) {
             gui_fields[i] = fields[i].toGUI();
         }
         return gui_fields;
     }
 
     public Field[] getFields() {
-         return new Field[]{
-                new Field(stringContainer.getString("field_start_titel"), 1, "Start",Field.GUI_Type.Start),
+        return new Field[]{
+                new Field(stringContainer.getString("field_start_titel"), 1, "Start", Field.GUI_Type.Start),
                 new Field(stringContainer.getString("field_burgerbar_titel"), 1, stringContainer.getString("field_burger_baren"), Field.GUI_Type.Street_Brown),
                 new Field(stringContainer.getString("field_pizzaria_titel"), 1, stringContainer.getString("field_pizzariaet"), Field.GUI_Type.Street_Brown),
                 new Field("C", 0, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),
@@ -48,5 +48,20 @@ public class GameBoard {
         };
     }
 
+    /**
+     * @return A list of gameboard fields.
+     */
+    @Override
+    public String toString() {
+        String out = "Fields:\n";
+        for (int i = 0; i < getFields().length; i++) {
+            if (i != getFields().length - 1) {
+                out += getFields()[i].name + ",\n";
+            } else {
+                out += getFields()[i].name + ".";
+            }
+        }
 
+        return out;
+    }
 }
