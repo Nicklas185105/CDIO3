@@ -1,19 +1,16 @@
 package main.Spil.Model;
 
-public class ChanceCard extends Field {
+public abstract class ChanceCard {
+    private String name;
 
-    public ChanceCard(String name, int value, String fieldText) {
-
-        super (name, value, fieldText);
-
+    public ChanceCard(String name) {
+        this.name = name;
     }
 
-//    public Field getRandomField(){
-//
-//        return new Field();
-//
-//
-//    }
+    public void invoke(FieldAction action)  { }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }

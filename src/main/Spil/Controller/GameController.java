@@ -29,12 +29,13 @@ public class GameController {
 
     public GameController(GUI_View guiView) {
         state = new GameState();
+        LanguagePackWrapper languagePackWrapper = null;
 
         try {
             state.setView(guiView.getGUI());
 
             String language = state.getView().getUserSelection("Choose language/Vælg sprog", "English", "Danish");
-            LanguagePackWrapper languagePackWrapper = new LanguagePackWrapper(Enum.valueOf(LanguagePackWrapper.LanguageType.class, language));
+            languagePackWrapper = new LanguagePackWrapper(Enum.valueOf(LanguagePackWrapper.LanguageType.class, language));
             state.setBoard(languagePackWrapper.getBoard());
             stringContainer = languagePackWrapper.getLanguagePack();
 
@@ -48,7 +49,7 @@ public class GameController {
         actionEvents.add(new PropertyFieldActionListener());
         actionEvents.add(new JailFieldActionListener());
         actionEvents.add(new StartFieldActionListener());
-        actionEvents.add(new ChanceFieldActionListener());
+        actionEvents.add(new ChanceFieldActionListener(languagePackWrapper.getLanguagePack()));
 
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
     }

@@ -1,17 +1,28 @@
 package main.Spil.Model;
 
-import gui_fields.GUI_Chance;
-import gui_fields.GUI_Field;
+import java.util.Random;
 
 public class ChanceFieldActionListener implements FieldActionListener {
+    ChanceCard[] cards;
+
+    public ChanceFieldActionListener(LanguagePack pack) {
+        cards = new ChanceCard[] {
+            new ChanceCardPoints(pack.getString("chance_point", 4), 4),
+            new ChanceCardPoints(pack.getString("chance_point", 2), 2),
+            new ChanceCardMove(pack.getString("chance_move", 5), 5)
+        };
+    }
+
     public void onFieldLandedOn(FieldAction action) {
-        if (isChanceField(action.guiField)) {
-            //Krydset feltet
-            boolean X = false;
-            action.player.setBalance(action.player.getBalance() + 2);
+        if (action.field.fieldType == Field.GUI_Type.Chance) {
+            ChanceCard chanceCard = drawRandomCard();
+            action.gameState.getView().showMessage(chanceCard.toString());
+            chanceCard.invoke(action);
         }
     }
-    private boolean isChanceField(GUI_Field guiField) {
-        return guiField instanceof GUI_Chance;
+
+    private ChanceCard drawRandomCard(){
+        Random r = new Random();
+        return cards[r.nextInt(cards.length)];
     }
 }
