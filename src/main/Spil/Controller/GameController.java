@@ -78,6 +78,8 @@ public class GameController {
                 );
 
                 state.getStateMananger().determineState(state);
+                if (state.getStateMananger().getState() == GameStateMananger.GameStateType.Done)
+                    break;
             }
         }
 
