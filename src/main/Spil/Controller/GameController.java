@@ -94,30 +94,27 @@ public class GameController {
 
     // Updates the car position based on currentPlayer's position.
     private void updateCar(Player currentPlayer) {
-        view.getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
-        view.getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
+        state.getView().getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
+        state.getView().getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
     }
 
     public Player[] getPlayers() {
         int n;
 
-        while ((n = Integer.parseInt(view.getUserSelection(stringContainer.getString("amount_players"), "2", "3", "4"))) <= 0) {
-            view.showMessage(stringContainer.getString("invalid_amount_players"));
+        while ((n = Integer.parseInt(state.getView().getUserSelection(stringContainer.getString("amount_players"), "2", "3", "4"))) <= 0) {
+            state.getView().showMessage(stringContainer.getString("invalid_amount_players"));
         }
 
         Player[] players = new Player[n];
         for (int i = 0; i < n; i++) {
 
-            String name = view.getUserString(stringContainer.getString("give_player_name", (i + 1)));
-
-            String type = view.getUserSelection(stringContainer.getString("select_card_type"), "Car", "Racecar", "Tractor", "UFO");
+            String name = state.getView().getUserString(stringContainer.getString("give_player_name", (i + 1)));
+            String type = state.getView().getUserSelection(stringContainer.getString("select_card_type"), "Car", "Racecar", "Tractor", "UFO");
 
             Player player = new Player(name, 24 - 2 * n, type);
             players[i] = player;
-            view.addPlayer(player);
-            view.getFields()[0].setCar(player, true);
-
-
+            state.getView().addPlayer(player);
+            state.getView().getFields()[0].setCar(player, true);
         }
         return players;
     }
