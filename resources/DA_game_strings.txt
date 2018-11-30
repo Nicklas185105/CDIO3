@@ -165,3 +165,6 @@ Du er flyttet %d felter!
 
 chance_point
 Du får %d point!
+
+winner
+%s vinder spillet!!

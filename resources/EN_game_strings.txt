@@ -162,3 +162,6 @@ You have moved %d fields!
 
 chance_point
 You get %d points!
+
+winner
+%s is the winner!!

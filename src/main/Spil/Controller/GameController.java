@@ -27,10 +27,10 @@ public class GameController {
     GameState state;
 
     ArrayList<FieldActionListener> actionEvents;
+    LanguagePackWrapper languagePackWrapper = null;
 
     public GameController(GUI_View guiView) {
         state = new GameState();
-        LanguagePackWrapper languagePackWrapper = null;
 
         try {
             state.setView(guiView.getGUI());
@@ -82,7 +82,7 @@ public class GameController {
         }
 
         Arrays.sort(state.getPlayers());
-        state.getView().showMessage(state.getPlayers()[0].getName());
+        state.getView().showMessage(languagePackWrapper.getLanguagePack().getString("winner", state.getPlayers()[0].getName()));
     }
 
     // Kalder alle FieldActionListeners
