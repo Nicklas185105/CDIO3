@@ -27,9 +27,8 @@ class FieldTest {
         Assert.assertEquals(guiField.getTitle(),field.name);
         Assert.assertEquals(guiField.getDescription(),fieldText);
         Assert.assertEquals(Integer.parseInt(guiField.getSubText().replace(" ", "")), value);
-        Assert.assertTrue(FieldExtensions.isOwnableField(guiField));
-        Assert.assertEquals(FieldExtensions.toOwnable(guiField).rentLable, "Leje: ");
-
+        Assert.assertTrue(Field.isOwnableField(guiField));
+        Assert.assertEquals(Field.toOwnable(guiField).rentLable, "Leje: ");
 
 
     }

@@ -4,9 +4,9 @@ import gui_fields.GUI_Ownable;
 
 public class PropertyFieldActionListener implements FieldActionListener {
     public void onFieldLandedOn(FieldAction action) {
-        if (FieldExtensions.isOwnableField(action.field)) {
+        if (Field.isOwnableField(action.field)) {
             // Retrieve field
-            GUI_Ownable ownableField = FieldExtensions.toOwnable(action.guiField);
+            GUI_Ownable ownableField = Field.toOwnable(action.guiField);
 
             int rent = Integer.parseInt(
                     ownableField.getRent()
@@ -31,13 +31,9 @@ public class PropertyFieldActionListener implements FieldActionListener {
                         ownableField.getRent()));
 
                 // Remove money from player pocket
-                if (action.player.getBalance() >= rent) {
-                    action.player.setBalance(action.player.getBalance() - rent);
-                    Player owner = findPlayer(action.gameState.getPlayers(), ownableField.getOwnerName());
-                    owner.setBalance(owner.getBalance() + rent);
-                } else {
-                    action.gameState.getStateMananger().setPlayerLost(action.player);
-                }
+                action.player.setBalance(action.player.getBalance() - rent);
+                Player owner = findPlayer(action.gameState.getPlayers(), ownableField.getOwnerName());
+                owner.setBalance(owner.getBalance() + rent);
             }
         }
     }

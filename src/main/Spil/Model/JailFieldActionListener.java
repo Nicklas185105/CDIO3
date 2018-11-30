@@ -13,6 +13,7 @@ public class JailFieldActionListener implements FieldActionListener {
                     //action.gameState.getPlayers()[getPlayerIndex(action.player, action.gameState.getPlayers())].setPosition(i);
                     setCarPosition(action.gameState, action.player, i);
                     action.player.setPosition(i);
+                    action.player.setBalance(action.player.getBalance() - 1);
                 }
             }
         }
