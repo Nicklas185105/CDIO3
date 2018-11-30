@@ -9,11 +9,13 @@ public class FieldAction {
     public final GUI_Field guiField;
     public final Player player;
     public final GUI gui;
+    public final Player[] players;
 
-    public  FieldAction(Field field, GUI_Field guiField, Player player, GUI gui) {
+    public  FieldAction(Field field, GUI_Field guiField, Player player, Player[] players, GUI gui) {
         this.field = field;
         this.guiField = guiField;
         this.player = player;
         this.gui = gui;
+        this.players = players;
     }
 }
