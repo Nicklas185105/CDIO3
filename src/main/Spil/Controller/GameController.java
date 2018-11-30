@@ -1,8 +1,6 @@
 package main.Spil.Controller;
 
 import gui_fields.GUI_Field;
-import gui_main.GUI;
-import gui_tests.TestRunExampleGame;
 import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
