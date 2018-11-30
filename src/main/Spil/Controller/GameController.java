@@ -50,17 +50,21 @@ public class GameController {
         state.setStateMananger(new GameStateMananger());
         actionEvents = new ArrayList<FieldActionListener>();
         actionEvents.add(new PropertyFieldActionListener());
+        actionEvents.add(new JailFieldActionListener());
+
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
 
         Dice die = new Dice(6);
 
         while (state.getStateMananger().getState() == GameStateMananger.GameState.Running) {
             for (int k = 0; k < state.getPlayers().length; k++) {
-                TestRunExampleGame.sleep(500);
+                sleep(100);
+
+                Player currentPlayer = state.getPlayers()[k];
+                state.getView().getUserButtonPressed(stringContainer.getString("die_roll", currentPlayer.getName()),stringContainer.getString("die_roll_two"));
 
                 int dieValue = die.roll();
                 state.getView().setDie(dieValue);
-                Player currentPlayer = state.getPlayers()[k];
 
                 moveCar(currentPlayer, dieValue);
 
@@ -101,5 +105,15 @@ public class GameController {
     private void updateCar(Player currentPlayer) {
         state.getView().getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
         state.getView().getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
+    }
+
+    public static void sleep(int n) {
+        long t0 = System.currentTimeMillis();
+
+        long t1;
+        do {
+            t1 = System.currentTimeMillis();
+        } while(t1 - t0 < (long)n);
+
     }
 }

@@ -39,7 +39,7 @@ public class GameBoard {
                 new Field("C", 0, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),
                 new Field(stringContainer.getString("field_toy_store_titel"), 3, stringContainer.getString("field_legetøjs_butikken"), Field.GUI_Type.Street_Yellow),
                 new Field(stringContainer.getString("field_pet_store_titel"), 3, stringContainer.getString("field_dyre_butikken"), Field.GUI_Type.Street_Yellow),
-                new Field(stringContainer.getString("field_go_to_prison_titel"), 0, stringContainer.getString("field_gå_fængsel"), Field.GUI_Type.Jail),
+                new Field(stringContainer.getString("field_go_to_prison_titel"), 1, stringContainer.getString("field_gå_fængsel"), Field.GUI_Type.Jail),
                 new Field(stringContainer.getString("field_bowling_hall_titel"), 4, stringContainer.getString("field_bowling_hallen"), Field.GUI_Type.Street_Green),
                 new Field(stringContainer.getString("field_zoo_titel"), 4, stringContainer.getString("field_zoo"), Field.GUI_Type.Street_Green),
                 new Field("C", 0, stringContainer.getString("field_prøv_lykken"), Field.GUI_Type.Chance),

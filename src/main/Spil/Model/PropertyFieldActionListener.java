@@ -31,7 +31,7 @@ public class PropertyFieldActionListener implements FieldActionListener {
                         ownableField.getRent()));
 
                 // Remove money from player pocket
-                if (action.player.getBalance() > rent) {
+                if (action.player.getBalance() >= rent) {
                     action.player.setBalance(action.player.getBalance() - rent);
                     Player owner = findPlayer(action.gameState.getPlayers(), ownableField.getOwnerName());
                     owner.setBalance(owner.getBalance() + rent);

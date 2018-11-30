@@ -78,6 +78,7 @@ public class Field {
     }
 
 
+
     public enum GUI_Type {
         Chance,
         Brewery,

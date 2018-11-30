@@ -22,7 +22,11 @@ public class Main {
      * @throws IOException Is used for...
      */
     public static void main(String[] args) throws IOException  {
-        new GameController();
+        try {
+            new GameController();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 

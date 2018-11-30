@@ -34,10 +34,6 @@ public class Player extends GUI_Player {
     }
 
 
-    public GUI_Player getGUIPlayer() {
-        return new GUI_Player(super.getName(), balance);
-    }
-
     public int getPosition() {
         return position;
     }
