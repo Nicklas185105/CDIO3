@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameBoardTest {
+    /**
+     * Unit-test of getGuiFields. That when the GUI_Field array creates exactly 24 fields into the GUI
+     */
 
     @Test
     void getGuiFields() {
@@ -21,6 +24,10 @@ class GameBoardTest {
 
     }
 
+    /**
+     * Unit-test of getFields. Makes sure that when the gameBoard calls the method Field[] that the gameBoard consists
+     * of 24 fields.
+     */
     @Test
     void getFields() {
 
