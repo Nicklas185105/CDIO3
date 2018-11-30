@@ -3,6 +3,10 @@ package main.Spil.Model;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Jail;
 
+/**
+ * JailFieldActionListener's main responsibility is to determine if you landed on the "go to jail" field.
+ * If the player lands on the "go to jail" field, then put the player there and charge them.
+ * */
 public class JailFieldActionListener implements FieldActionListener {
     public void onFieldLandedOn(FieldAction action) {
         if (isJailCard(action.guiField) && isGoToJailCard(action.field)) {
@@ -19,7 +23,11 @@ public class JailFieldActionListener implements FieldActionListener {
         }
     }
 
-    // Recursive function that ensures that the car position is between 0 and 23 (i.e. on board)
+    /**
+     * This function recursively calls itself until it ensures the input value is between 0 and 23 (I.e. clamps a position to the board)
+     * @param position
+     * @return
+     */
     private int clampPosition(int position) {
         if (position < 0) { return clampPosition(position + 24); }
         if (position < 24) return position;

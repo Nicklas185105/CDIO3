@@ -1,5 +1,8 @@
 package main.Spil.Model;
 
+/**
+ * Creates a ChanceCardMove which is a ChanceCard where the rule is that you move by "moveAmount" when you draw it!
+ * */
 public class ChanceCardMove extends ChanceCard {
     private int moveAmount;
 

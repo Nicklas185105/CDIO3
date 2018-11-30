@@ -1,8 +1,6 @@
 package main.Spil.Controller;
 
 import gui_fields.GUI_Field;
-import gui_main.GUI;
-import gui_tests.TestRunExampleGame;
 import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
@@ -26,9 +24,18 @@ public class GameController {
      */
     GameState state;
 
+    /**
+     * actionEvents represents a list of classes that implements FieldActionListener, i.e. when a player land on a field each field is invoked
+     */
     ArrayList<FieldActionListener> actionEvents;
+
     LanguagePackWrapper languagePackWrapper = null;
 
+    /**
+     * Creates a new GameController that is dependant on a GUI_View class (used for prompting dialogs).
+     * GameController is used for controlling game states
+     * @param guiView
+     */
     public GameController(GUI_View guiView) {
         state = new GameState();
 
@@ -55,6 +62,9 @@ public class GameController {
         state.setPlayers(new RetrievePlayerDialog(state, stringContainer).showPlayerDialog());
     }
 
+    /**
+     * Begins the game
+     */
     public void startGame() {
         Dice die = new Dice(6);
 
@@ -87,7 +97,13 @@ public class GameController {
         state.getView().showMessage(languagePackWrapper.getLanguagePack().getString("winner", state.getPlayers()[0].getName()));
     }
 
-    // Kalder alle FieldActionListeners
+    /**
+     * Calls "onFieldLandedOn" for every action event
+     * @param field
+     * @param guiField
+     * @param player
+     * @param faceValue
+     */
     private void invokeLandEvents(Field field, GUI_Field guiField, Player player, int faceValue) {
         for (int i = 0; i < actionEvents.size(); i++) {
             actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, state, faceValue));
@@ -95,6 +111,12 @@ public class GameController {
     }
 
     // Recursive function that ensures that the car position is between 0 and 23 (i.e. on board)
+
+    /**
+     * This function recursively calls itself until it ensures the input value is between 0 and 23 (I.e. clamps a position to the board)
+     * @param position
+     * @return
+     */
     private int clampPosition(int position) {
         if (position < 0) { return clampPosition(position + 24); }
         if (position < 24) return position;
@@ -102,6 +124,12 @@ public class GameController {
     }
 
     // Moves the player's car with amount equvivalent to delta
+
+    /**
+     * moveCar takes an player as an input argument and moves him by delta amount forward. (If delta is negative the car will be moved backwards)
+     * @param currentPlayer
+     * @param delta
+     */
     private void moveCar(Player currentPlayer, int delta) {
         for (int q = 0; q < delta; q++) {
             currentPlayer.setPosition(clampPosition(currentPlayer.getPosition() + 1));
@@ -110,12 +138,18 @@ public class GameController {
         }
     }
 
-    // Updates the car position based on currentPlayer's position.
+    /**
+     * Updates the cars position on the game board (UI)
+     * */
     private void updateCar(Player currentPlayer) {
         state.getView().getFields()[clampPosition(currentPlayer.getPosition() - 1)].setCar(currentPlayer, false);
         state.getView().getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
     }
 
+    /**
+     * Creates a timeout of n miliseconds. Calling this will make the program stop and wait for n miliseconds and then allow further execution.
+     * This method has no lock so prevent calling it from multiple threads.
+     * */
     public static void sleep(int n) {
         long t0 = System.currentTimeMillis();
 

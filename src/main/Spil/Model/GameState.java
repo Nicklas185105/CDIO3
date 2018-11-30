@@ -2,6 +2,10 @@ package main.Spil.Model;
 
 import gui_main.GUI;
 
+/**
+ * The responsibility of this class is to encapsulates a state of the game
+ * I.e. where every player is, the fields of the board, where are the fields and what GUI are we using?
+ * */
 public class GameState {
     private GUI view;
     private Player[] players;

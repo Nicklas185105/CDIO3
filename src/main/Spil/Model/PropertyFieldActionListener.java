@@ -2,6 +2,11 @@ package main.Spil.Model;
 
 import gui_fields.GUI_Ownable;
 
+/**
+ * PropertyFieldActionListener's main responsibility is to determine if you landed on a field that is "ownable"
+ * If that field IS ownable, but doesnt have an owner then prompt player asking if they wish to purchase it.
+ * If the field IS ownable, and does have an owner then charge the rent of that property from the user
+ * */
 public class PropertyFieldActionListener implements FieldActionListener {
     public void onFieldLandedOn(FieldAction action) {
         try {

@@ -1,5 +1,8 @@
 package main.Spil.Model;
 
+/**
+ * Create a new dialog asking for player input, then converts that into an player array and returns it
+ * */
 public class RetrievePlayerDialog {
     private GameState state;
     private LanguagePack stringContainer;

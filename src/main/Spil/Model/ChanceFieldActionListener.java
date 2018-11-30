@@ -2,6 +2,9 @@ package main.Spil.Model;
 
 import java.util.Random;
 
+/**
+ * ChanceFieldActionListener's main responsibility is to determine if you landed on a ChanceCard and if you have draw & invoke it!
+ * */
 public class ChanceFieldActionListener implements FieldActionListener {
     ChanceCard[] cards;
 

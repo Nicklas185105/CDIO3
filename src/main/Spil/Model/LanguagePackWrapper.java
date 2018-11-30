@@ -1,8 +1,6 @@
 package main.Spil.Model;
 
 import gui_main.GUI;
-import main.Spil.Model.GameBoard;
-import main.Spil.Model.LanguagePack;
 
 import java.io.IOException;
 
@@ -22,6 +20,10 @@ public class LanguagePackWrapper {
         board = createBoard();
     }
 
+    /**
+     * Opdates the text for every field in the GUI
+     * @param gui
+     */
     public void updateGUI(GUI gui) {
         for (int j = 0; j < gui.getFields().length; j++) {
             gui.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
