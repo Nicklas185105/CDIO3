@@ -6,7 +6,7 @@ import gui_tests.TestRunExampleGame;
 import main.Spil.Model.*;
 import main.Spil.View.GUI_View;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -32,38 +32,33 @@ public class GameController {
     public GameController() {
         try {
             view = new GUI_View().getGUI();
-        } catch (FileNotFoundException e) {
+
+            String language = view.getUserSelection("Choose language/Vælg sprog", "English", "Danish");
+            LanguagePackWrapper languagePackWrapper = new LanguagePackWrapper(Enum.valueOf(LanguagePackWrapper.LanguageType.class, language));
+            board = languagePackWrapper.getBoard();
+            stringContainer = languagePackWrapper.getLanguagePack();
+
+            if (!language.equals("English")) { languagePackWrapper.updateGUI(view); }
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        String language = view.getUserSelection("Choose language/Vælg sprog", "EN", "DA");
-
-        try {
-            stringContainer = new LanguagePack(String.format("resources/%s_game_strings.txt", language));
-        } catch (FileNotFoundException fnfException) {
-            System.out.println("Kunne ikke finde DA_game_strings.txt filen under resourcer.");
-        }
-
-        board = new GameBoard(stringContainer);
-        if (language != "EN") {
-            for (int j = 0; j < view.getFields().length; j++) {
-                view.getFields()[j].setDescription(board.getGuiFields()[j].getDescription());
-                view.getFields()[j].setSubText(board.getGuiFields()[j].getSubText());
-                view.getFields()[j].setTitle(board.getGuiFields()[j].getTitle());
-            }
-        }
-
-        this.players = getPlayers();
-        Dice die = new Dice(6);
 
         actionEvents = new ArrayList<FieldActionListener>();
         actionEvents.add(new PropertyFieldActionListener());
 
-        while (true) { // Denne kører hele spillet (dvs. kører bilerne rundt i et loop i GUI)
+        this.players = getPlayers();
+        Dice die = new Dice(6);
+
+        while (true) {
             for (int k = 0; k < players.length; k++) {
+                TestRunExampleGame.sleep(500);
+
                 int dieValue = die.roll();
                 view.setDie(dieValue);
                 Player currentPlayer = players[k];
+
+
+                moveCar(currentPlayer, dieValue);
 
                 invokeLandEvents(
                     board.getFields()[currentPlayer.getPosition()],
@@ -71,14 +66,14 @@ public class GameController {
                     currentPlayer
                 );
 
-                moveCar(currentPlayer, dieValue);
             }
         }
     }
 
+    // Kalder alle FieldActionListeners
     private void invokeLandEvents(Field field, GUI_Field guiField, Player player) {
         for (int i = 0; i < actionEvents.size(); i++) {
-            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, view));
+            actionEvents.get(i).onFieldLandedOn(new FieldAction(field, guiField, player, players, view));
         }
     }
 
@@ -104,11 +99,6 @@ public class GameController {
         view.getFields()[currentPlayer.getPosition()].setCar(currentPlayer, true);
     }
 
-    /**
-     * This method is used for getting the players names.
-     *
-     * @return Returning the players names.
-     */
     public Player[] getPlayers() {
         int n;
 
@@ -132,6 +122,4 @@ public class GameController {
         }
         return players;
     }
-
-
 }

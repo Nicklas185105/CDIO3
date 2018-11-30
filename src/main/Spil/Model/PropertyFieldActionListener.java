@@ -8,11 +8,18 @@ public class PropertyFieldActionListener implements FieldActionListener {
             // Retrieve field
             GUI_Ownable ownableField = Field.toOwnable(action.guiField);
 
+            int rent = Integer.parseInt(
+                    ownableField.getRent()
+                            .split(":")[1]
+                            .replace(" ", "")
+            );
+
             // Check if the field is for sale?
-            if (ownableField.getOwnerName() == null) {
+            if (ownableField.getOwnerName() == null && action.player.getBalance() >= rent) {
                 // Prompt dialog to buy property?
                 if (action.gui.getUserSelection(String.format("Denne bolig er til salg! Vil %s købe denne bolig?", action.player.getName()), "yes", "no").equals("yes")) {
                     ownableField.setOwnerName(action.player.getName());
+                    action.player.setBalance(action.player.getBalance() - rent);
                 }
             }
 
@@ -22,7 +29,23 @@ public class PropertyFieldActionListener implements FieldActionListener {
                         action.player.getName(),
                         ownableField.getOwnerName(),
                         ownableField.getRent()));
+
+                // Remove money from player pocket
+                if (action.player.getBalance() > rent) {
+                    action.player.setBalance(action.player.getBalance() - rent);
+                    Player owner = findPlayer(action.players, ownableField.getOwnerName());
+                    owner.setBalance(owner.getBalance() + rent);
+                } else {
+                    //tabt
+                }
             }
         }
+    }
+
+    private Player findPlayer(Player[] players, String name) {
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getName().equals(name)) return players[i];
+        }
+        return null;
     }
 }
