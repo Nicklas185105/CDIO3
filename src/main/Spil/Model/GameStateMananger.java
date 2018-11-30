@@ -1,20 +1,24 @@
 package main.Spil.Model;
 
 public class GameStateMananger {
-    public enum GameState {
+    public enum GameStateType {
         Running,
         Done
     }
 
-    private GameState state;
+    private GameStateType state;
 
     public GameStateMananger() {
-        state = GameState.Running;
+        state = GameStateType.Running;
     }
 
-    public void setPlayerLost(Player player) {
-        state = GameState.Done;
+    public void determineState(GameState gameState) {
+        for (int i = 0; i < gameState.getPlayers().length; i++) {
+            if (gameState.getPlayers()[i].getBalance() < 0) {
+                state = GameStateType.Done;
+            }
+        }
     }
 
-    public GameState getState() { return state; }
+    public GameStateType getState() { return state; }
 }

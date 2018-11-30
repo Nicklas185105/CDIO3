@@ -52,7 +52,7 @@ public class GameController {
 
         Dice die = new Dice(6);
 
-        while (state.getStateMananger().getState() == GameStateMananger.GameState.Running) {
+        while (state.getStateMananger().getState() == GameStateMananger.GameStateType.Running) {
             for (int k = 0; k < state.getPlayers().length; k++) {
                 sleep(100);
 
@@ -69,6 +69,8 @@ public class GameController {
                     state.getView().getFields()[currentPlayer.getPosition()],
                     currentPlayer
                 );
+
+                state.getStateMananger().determineState(state);
             }
         }
     }
