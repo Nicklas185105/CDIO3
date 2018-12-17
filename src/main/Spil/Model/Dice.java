@@ -15,6 +15,8 @@ public class Dice {
      */
     int value = 1;
 
+    int alder = 18;
+
     /**
      * Defines the sides for the die with a final static so it can't be changed.
      */

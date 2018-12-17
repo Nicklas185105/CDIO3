@@ -19,6 +19,10 @@ public class GameBoard {
         return gui_fields;
     }
 
+    /**
+     * An array of the Gameboard fields. Field variables include name, value, field text and field type.
+     * Name and field text is found through our string container.
+     */
     public Field[] getFields() {
         return new Field[]{
                 new Field(stringContainer.getString("field_start_titel"), 1, "Start", Field.GUI_Type.Start),
